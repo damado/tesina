@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_role_list_collaborative_process_init" nsURI="org::lifia::collaborativeTool::utils::generate_role_list_collaborative_process_init" startHeaderPosition="120" endHeaderPosition="345">
+    <documentation xsi:type="mtl:ModuleDocumentation">
+      <body startPosition="32" endPosition="117" value="&#xD;&#xA;The documentation of the module generate_role_list_collaborative_process_init.&#xD;&#xA;&#xD;&#xA;"/>
+    </documentation>
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateRoleListCollaborativeProcessInit" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="mtl:LetBlock">
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;'"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborationRole" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/aCollaborationRole">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborationRole"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="',&#xA;"/>
+            <loopVariable name="aCollaborationRole">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborationRole"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Bag(CollaborationRole)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" eType="/7/Bag(CollaborativeActivity)" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(CollaborationRole)">
+                <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/collect/temp1">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeActivity/myRoles"/>
+              </body>
+              <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              </iterator>
+            </iterSet>
+            <each xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </each>
+          </body>
+          <letVariable name="aCollaborativeActivity" eType="/7/Bag(CollaborativeActivity)">
+            <initExpression xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Bag(CollaborativeActivity)">
+              <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Bag(OclAny)">
+                <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Bag(ActivityNode)">
+                  <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Bag(ActivityEdge)">
+                    <source xsi:type="ocl.ecore:OperationCallExp" eType="/7/Set(InitialNode)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+                      <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/Set(ActivityNode)">
+                        <source xsi:type="ocl.ecore:VariableExp" name="activity" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/activity">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity/ownedNode"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:TypeExp" eType="/8/InitialNode">
+                        <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InitialNode"/>
+                      </argument>
+                    </source>
+                    <body xsi:type="ocl.ecore:PropertyCallExp" eType="/7/Set(ActivityEdge)">
+                      <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/temp2">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InitialNode"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode/outgoing"/>
+                    </body>
+                    <iterator xsi:type="ocl.ecore:Variable" name="temp2">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InitialNode"/>
+                    </iterator>
+                  </source>
+                  <body xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="temp2" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/temp3">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge/target"/>
+                  </body>
+                  <iterator xsi:type="ocl.ecore:Variable" name="temp3">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+                  </iterator>
+                </source>
+                <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/ecore_EObject_Class/eGet">
+                  <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="temp3" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/temp4">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="collaborativeActivity">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </body>
+                <iterator xsi:type="ocl.ecore:Variable" name="temp4">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+                </iterator>
+              </source>
+              <body xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="temp4" referredVariable="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/temp5">
+                  <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/8/CollaborativeActivity">
+                  <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+              </body>
+              <iterator xsi:type="ocl.ecore:Variable" name="temp5">
+                <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+              </iterator>
+            </initExpression>
+          </letVariable>
+        </body>
+        <loopVariable name="activity">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/7/Set(Activity)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/Set(NamedElement)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcess" referredVariable="/0/generateRoleListCollaborativeProcessInit/aCollaborativeProcess">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+          </source>
+          <argument xsi:type="ocl.ecore:TypeExp" eType="/8/Activity">
+            <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+          </argument>
+        </iterSet>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <parameter name="aCollaborativeProcess">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="eGet">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eParameters name="featureName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateRoleListCollaborativeProcessInit">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateRoleListCollaborativeProcessInit"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeProcess">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+      <eOperations name="filter">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:CollectionType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+        <eParameters name="filter">
+          <eType xsi:type="ocl.ecore:TypeType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeProcess_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeProcess"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(NamedElement)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Activity)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ActivityNode)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(InitialNode)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InitialNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ActivityEdge)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(ActivityEdge)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(ActivityNode)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(OclAny)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(CollaborativeActivity)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(CollaborationRole)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborationRole"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(CollaborationRole)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborationRole"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Activity">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="InitialNode">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InitialNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeActivity">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborationRole"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborationRole"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/%">
+      <details key="start" value="29"/>
+      <details key="end" value="119"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateRoleListCollaborativeProcessInit">
+      <details key="start" value="234"/>
+      <details key="end" value="798"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateRoleListCollaborativeProcessInit/%">
+      <details key="start" value="341"/>
+      <details key="end" value="344"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateRoleListCollaborativeProcessInit/%.1">
+      <details key="start" value="347"/>
+      <details key="end" value="348"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateRoleListCollaborativeProcessInit/%.2">
+      <details key="start" value="350"/>
+      <details key="end" value="777"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateRoleListCollaborativeProcessInit/%.2/%">
+      <details key="start" value="435"/>
+      <details key="end" value="768"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%">
+      <details key="start" value="618"/>
+      <details key="end" value="758"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/%">
+      <details key="start" value="713"/>
+      <details key="end" value="719"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/%.1">
+      <details key="start" value="720"/>
+      <details key="end" value="743"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/%.1/aCollaborationRole">
+      <details key="start" value="720"/>
+      <details key="end" value="738"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/%.2">
+      <details key="start" value="745"/>
+      <details key="end" value="748"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/aCollaborationRole">
+      <details key="start" value="624"/>
+      <details key="end" value="662"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/collect">
+      <details key="start" value="665"/>
+      <details key="end" value="695"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/collect/aCollaborativeActivity">
+      <details key="start" value="665"/>
+      <details key="end" value="687"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/collect/%">
+      <details key="start" value="688"/>
+      <details key="end" value="695"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/collect/%/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/%/%.3">
+      <details key="start" value="707"/>
+      <details key="end" value="710"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity">
+      <details key="start" value="440"/>
+      <details key="end" value="612"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect">
+      <details key="start" value="495"/>
+      <details key="end" value="613"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect">
+      <details key="start" value="495"/>
+      <details key="end" value="580"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect">
+      <details key="start" value="495"/>
+      <details key="end" value="550"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect">
+      <details key="start" value="495"/>
+      <details key="end" value="543"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/%">
+      <details key="start" value="495"/>
+      <details key="end" value="534"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/%/%">
+      <details key="start" value="495"/>
+      <details key="end" value="513"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/%/%/activity">
+      <details key="start" value="495"/>
+      <details key="end" value="503"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/%/%.1">
+      <details key="start" value="522"/>
+      <details key="end" value="533"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/%.1">
+      <details key="start" value="535"/>
+      <details key="end" value="543"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/collect/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/%">
+      <details key="start" value="544"/>
+      <details key="end" value="550"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/%/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/collect/temp3">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/%/temp3">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/%/%">
+      <details key="start" value="556"/>
+      <details key="end" value="579"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/collect/temp4">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/%/temp4">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/%/%">
+      <details key="start" value="591"/>
+      <details key="end" value="612"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateRoleListCollaborativeProcessInit/%.2/%/aCollaborativeActivity/collect/temp5">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateRoleListCollaborativeProcessInit/%.2/activity">
+      <details key="start" value="356"/>
+      <details key="end" value="375"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateRoleListCollaborativeProcessInit/%.2/%.1">
+      <details key="start" value="378"/>
+      <details key="end" value="429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateRoleListCollaborativeProcessInit/%.2/%.1/%">
+      <details key="start" value="378"/>
+      <details key="end" value="411"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateRoleListCollaborativeProcessInit/%.2/%.1/%/aCollaborativeProcess">
+      <details key="start" value="378"/>
+      <details key="end" value="399"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateRoleListCollaborativeProcessInit/%.2/%.1/%.1">
+      <details key="start" value="420"/>
+      <details key="end" value="428"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateRoleListCollaborativeProcessInit/%.3">
+      <details key="start" value="780"/>
+      <details key="end" value="783"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateRoleListCollaborativeProcessInit/aCollaborativeProcess">
+      <details key="start" value="292"/>
+      <details key="end" value="336"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

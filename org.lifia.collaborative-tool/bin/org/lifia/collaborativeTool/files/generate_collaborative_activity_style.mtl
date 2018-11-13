@@ -1,0 +1,36 @@
+[comment encoding = UTF-8 /]
+[module generate_collaborative_activity_style('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[template public generateCollaborativeActivityStyle(aCollaborativeActivity : CollaborativeActivity)]
+
+[file ('src/app/components/collaborativeactivity/' + replaceSpaceByDash(aCollaborativeActivity.name.toLower()) + '/'+ replaceSpaceByDash(aCollaborativeActivity.name.toLower()) +'.component.css', false, 'UTF-8')]
+.wrapper{
+	width: 100%;
+	margin: 0 auto;
+}
+.rectangle{
+	font-family: sans-serif;
+    color: #000000;
+    padding: 1px;
+    width: 30%;
+    height: 300px;
+    margin-right: 3%;
+    margin-top: 15px;
+    background: #2a6bcc;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+}
+.rectangle:last-child{
+	margin-right:0;
+}
+.rectangle:before{
+	content:"";
+	display:block;
+	float: left; 
+}
+
+[/file]
+[/template]

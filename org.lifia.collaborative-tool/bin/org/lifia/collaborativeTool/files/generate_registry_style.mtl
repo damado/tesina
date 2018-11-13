@@ -1,0 +1,33 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_registry_style.
+ */]
+[module generate_registry_style('http://cm/1.0')]
+
+
+[**
+ * The documentation of the template generateRegistryStyle.
+ * @param aCollaborativeModel
+ */]
+[template public generateRegistryStyle(aCollaborativeModel : CollaborativeModel)]
+
+[file ('src/app/components/login/registry.component.css', false, 'UTF-8')]
+.link-login {
+  float: right !important;
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  cursor: pointer;
+  z-index: 99;
+}
+.link-login:hover {
+  background: #ddd;
+  color: black;
+}
+
+[/file]
+[/template]

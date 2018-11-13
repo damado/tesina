@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:CollaborativeModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://cm/1.0" name="Juego de Ajedrez">
+  <packagedElement xsi:type="cm:Workspace" name="Mesa"/>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="JugarPartida2"/>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.2/@ownedEnd.0 //@packagedElement.2/@ownedEnd.1" navigableOwnedEnd="//@packagedElement.2/@ownedEnd.0">
+    <ownedEnd name="" type="//JugarPartida2" association="//@packagedElement.2"/>
+    <ownedEnd type="//Mesa" association="//@packagedElement.2"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.3/@ownedEnd.0 //@packagedElement.3/@ownedEnd.1">
+    <ownedEnd type="//VerTableros" association="//@packagedElement.3"/>
+    <ownedEnd type="//Mesa" association="//@packagedElement.3"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="VerTableros"/>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.5/@ownedEnd.0 //@packagedElement.5/@ownedEnd.1">
+    <ownedEnd type="//JugarPartida2" association="//@packagedElement.5"/>
+    <ownedEnd name="" type="//Chat" association="//@packagedElement.5"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.6/@ownedEnd.0 //@packagedElement.6/@ownedEnd.1">
+    <ownedEnd type="//VerTableros" association="//@packagedElement.6"/>
+    <ownedEnd type="//VisorPartidas" association="//@packagedElement.6"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.7/@ownedEnd.0 //@packagedElement.7/@ownedEnd.1">
+    <ownedEnd type="//JugarPartida2" association="//@packagedElement.7"/>
+    <ownedEnd type="//Tablero" association="//@packagedElement.7"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="VisorPartidas"/>
+  <packagedElement xsi:type="cm:Tool" name="Tablero"/>
+  <packagedElement xsi:type="cm:Tool" name="Chat"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Jugador">
+    <ownedOperation name="crearPartida"/>
+    <ownedOperation name="enviarMensaje"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Espectador">
+    <ownedOperation name="verPartida"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.13/@ownedEnd.0 //@packagedElement.13/@ownedEnd.1">
+    <ownedEnd type="//JugarPartida2" association="//@packagedElement.13"/>
+    <ownedEnd type="//Jugador" association="//@packagedElement.13"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.14/@ownedEnd.0 //@packagedElement.14/@ownedEnd.1">
+    <ownedEnd type="//VerTableros" association="//@packagedElement.14"/>
+    <ownedEnd type="//Jugador" association="//@packagedElement.14"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.15/@ownedEnd.0 //@packagedElement.15/@ownedEnd.1">
+    <ownedEnd type="//VerTableros" association="//@packagedElement.15"/>
+    <ownedEnd type="//Espectador" association="//@packagedElement.15"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Workspace" name="pepe"/>
+</cm:CollaborativeModel>

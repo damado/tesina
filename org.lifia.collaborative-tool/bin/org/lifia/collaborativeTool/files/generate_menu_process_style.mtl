@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_menu_process_style.
+ */]
+[module generate_menu_process_style('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[template public generateMenuProcessStyle(aCollaborativeProcess : CollaborativeProcess)]
+
+[file ('src/app/components/menucollaborativeprocess/menuprocess' + replaceSpaceByDash(aCollaborativeProcess.name.toLower()) + '/menuprocess' + replaceSpaceByDash(aCollaborativeProcess.name.toLower()) + '.component.css', false, 'UTF-8')]
+
+[/file]
+[/template]

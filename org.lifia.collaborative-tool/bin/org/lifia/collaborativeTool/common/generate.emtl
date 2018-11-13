@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate" nsURI="org::lifia::collaborativeTool::common::generate" startHeaderPosition="29" endHeaderPosition="164">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <imports href="generate_app.emtl#/0"/>
+    <imports href="generate_component.emtl#/0"/>
+    <imports href="../utils/get_workspace_in_collaborative_activity.emtl#/0"/>
+    <imports href="../files/generate_workspace_view.emtl#/0"/>
+    <imports href="../files/generate_workspace_style.emtl#/0"/>
+    <imports href="../files/generate_collaborative_activity_style.emtl#/0"/>
+    <imports href="../files/generate_collaborative_activity_view.emtl#/0"/>
+    <imports href="generate_process.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateAppComponent" visibility="Public" main="true">
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="generate_app.emtl#/0/generateApp"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppComponent/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:LetBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="generate_component.emtl#/0/generateComponent"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="aWorkspace" referredVariable="/0/generateAppComponent/%.2/%.1/aWorkspace">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppComponent/aCollaborativeModel">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../files/generate_workspace_view.emtl#/0/generateWorkspaceView"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppComponent/aCollaborativeModel">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="aWorkspace" referredVariable="/0/generateAppComponent/%.2/%.1/aWorkspace">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../files/generate_workspace_style.emtl#/0/generateWorkspaceStyle"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="aWorkspace" referredVariable="/0/generateAppComponent/%.2/%.1/aWorkspace">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <letVariable name="aWorkspace">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+            <initExpression xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppComponent/%.2/aCollaborativeElement">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+            </initExpression>
+          </letVariable>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <loopVariable name="aCollaborativeElement">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/7/Set(CollaborativeElement)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/Set(NamedElement)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppComponent/aCollaborativeModel">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+          </source>
+          <argument xsi:type="ocl.ecore:TypeExp" eType="/8/CollaborativeElement">
+            <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+          </argument>
+        </iterSet>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="generate_process.emtl#/0/generateProcess"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppComponent/aCollaborativeModel">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+          </argument>
+          <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcess" referredVariable="/0/generateAppComponent/%.4/aCollaborativeProcess">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <loopVariable name="aCollaborativeProcess">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/7/Set(CollaborativeProcess)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/Set(NamedElement)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppComponent/aCollaborativeModel">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+          </source>
+          <argument xsi:type="ocl.ecore:TypeExp" eType="/8/CollaborativeProcess">
+            <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+          </argument>
+        </iterSet>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateAppComponent">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateAppComponent"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateApp">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_app.emtl#/0/generateApp"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateComponent">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_component.emtl#/0/generateComponent"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeElement">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+        </eParameters>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateWorkspaceView">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../files/generate_workspace_view.emtl#/0/generateWorkspaceView"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aWorkspace">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateWorkspaceStyle">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../files/generate_workspace_style.emtl#/0/generateWorkspaceStyle"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aWorkspace">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateProcess">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_process.emtl#/0/generateProcess"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeProcess">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+      <eOperations name="filter">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:CollectionType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+        <eParameters name="filter">
+          <eType xsi:type="ocl.ecore:TypeType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeElement"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeActivity_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeActivity"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_Workspace_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//Workspace"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(NamedElement)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(CollaborativeElement)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(CollaborativeProcess)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeElement">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeProcess">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateAppComponent">
+      <details key="start" value="711"/>
+      <details key="end" value="3514"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateAppComponent/%">
+      <details key="start" value="811"/>
+      <details key="end" value="843"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateAppComponent/%/aCollaborativeModel">
+      <details key="start" value="823"/>
+      <details key="end" value="842"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateAppComponent/%.1">
+      <details key="start" value="845"/>
+      <details key="end" value="847"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateAppComponent/%.2">
+      <details key="start" value="847"/>
+      <details key="end" value="1648"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateAppComponent/%.2/%">
+      <details key="start" value="963"/>
+      <details key="end" value="964"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateAppComponent/%.2/%.1">
+      <details key="start" value="965"/>
+      <details key="end" value="1181"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateAppComponent/%.2/%.1/%">
+      <details key="start" value="1018"/>
+      <details key="end" value="1020"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateAppComponent/%.2/%.1/%.1">
+      <details key="start" value="1021"/>
+      <details key="end" value="1071"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateAppComponent/%.2/%.1/%.1/aWorkspace">
+      <details key="start" value="1039"/>
+      <details key="end" value="1049"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateAppComponent/%.2/%.1/%.1/aCollaborativeModel">
+      <details key="start" value="1051"/>
+      <details key="end" value="1070"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateAppComponent/%.2/%.1/%.2">
+      <details key="start" value="1073"/>
+      <details key="end" value="1076"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateAppComponent/%.2/%.1/%.3">
+      <details key="start" value="1077"/>
+      <details key="end" value="1131"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateAppComponent/%.2/%.1/%.3/aCollaborativeModel">
+      <details key="start" value="1099"/>
+      <details key="end" value="1118"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateAppComponent/%.2/%.1/%.3/aWorkspace">
+      <details key="start" value="1120"/>
+      <details key="end" value="1130"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateAppComponent/%.2/%.1/%.4">
+      <details key="start" value="1133"/>
+      <details key="end" value="1136"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateAppComponent/%.2/%.1/%.5">
+      <details key="start" value="1137"/>
+      <details key="end" value="1171"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateAppComponent/%.2/%.1/%.5/aWorkspace">
+      <details key="start" value="1160"/>
+      <details key="end" value="1170"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateAppComponent/%.2/%.1/%.6">
+      <details key="start" value="1173"/>
+      <details key="end" value="1174"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateAppComponent/%.2/%.1/aWorkspace">
+      <details key="start" value="970"/>
+      <details key="end" value="1016"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateAppComponent/%.2/%.1/aWorkspace/aCollaborativeElement">
+      <details key="start" value="996"/>
+      <details key="end" value="1017"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateAppComponent/%.2/%.2">
+      <details key="start" value="1182"/>
+      <details key="end" value="1183"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateAppComponent/%.2/%.3">
+      <details key="start" value="1641"/>
+      <details key="end" value="1642"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateAppComponent/%.2/aCollaborativeElement">
+      <details key="start" value="853"/>
+      <details key="end" value="896"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateAppComponent/%.2/%.4">
+      <details key="start" value="899"/>
+      <details key="end" value="960"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateAppComponent/%.2/%.4/%">
+      <details key="start" value="899"/>
+      <details key="end" value="930"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateAppComponent/%.2/%.4/%/aCollaborativeModel">
+      <details key="start" value="899"/>
+      <details key="end" value="918"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateAppComponent/%.2/%.4/%.1">
+      <details key="start" value="939"/>
+      <details key="end" value="959"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateAppComponent/%.3">
+      <details key="start" value="1649"/>
+      <details key="end" value="1650"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateAppComponent/%.4">
+      <details key="start" value="1650"/>
+      <details key="end" value="3501"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateAppComponent/%.4/%">
+      <details key="start" value="3431"/>
+      <details key="end" value="3432"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateAppComponent/%.4/%.1">
+      <details key="start" value="3433"/>
+      <details key="end" value="3492"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateAppComponent/%.4/%.1/aCollaborativeModel">
+      <details key="start" value="3449"/>
+      <details key="end" value="3468"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateAppComponent/%.4/%.1/aCollaborativeProcess">
+      <details key="start" value="3470"/>
+      <details key="end" value="3491"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateAppComponent/%.4/%.2">
+      <details key="start" value="3494"/>
+      <details key="end" value="3495"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateAppComponent/%.4/aCollaborativeProcess">
+      <details key="start" value="1656"/>
+      <details key="end" value="1699"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateAppComponent/%.4/%.3">
+      <details key="start" value="1702"/>
+      <details key="end" value="1763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateAppComponent/%.4/%.3/%">
+      <details key="start" value="1702"/>
+      <details key="end" value="1733"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateAppComponent/%.4/%.3/%/aCollaborativeModel">
+      <details key="start" value="1702"/>
+      <details key="end" value="1721"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateAppComponent/%.4/%.3/%.1">
+      <details key="start" value="1742"/>
+      <details key="end" value="1762"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateAppComponent/%.5">
+      <details key="start" value="3502"/>
+      <details key="end" value="3503"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateAppComponent/aCollaborativeModel">
+      <details key="start" value="749"/>
+      <details key="end" value="789"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

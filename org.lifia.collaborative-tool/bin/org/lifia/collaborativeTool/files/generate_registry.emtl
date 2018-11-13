@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_registry" nsURI="org::lifia::collaborativeTool::files::generate_registry" endHeaderPosition="113">
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <imports href="generate_registry_view.emtl#/0"/>
+    <imports href="generate_registry_style.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateRegistry" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import { Component, TemplateRef, OnInit } from '@angular/core';&#xA;import { BsModalService } from 'ngx-bootstrap/modal';&#xA;import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';&#xA;import { FormGroup, FormControl, Validators } from '@angular/forms';&#xA;import { AuthenticationService } from '../../services/authentication.service';&#xA;&#xA;@Component({&#xA;  selector: 'app-registry',&#xA;  templateUrl: './registry.component.html',&#xA;  styleUrls: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="'./registry.component.css'"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;})&#xA;export class RegistryComponent implements OnInit {&#xA;&#xA;&#x9;public modalRef: BsModalRef;&#xA;&#x9;public formLogin: FormGroup;&#xA;&#xA;&#x9;constructor(private modalService: BsModalService, private autenticationService: AuthenticationService) {}&#xA;&#xA;&#x9;ngOnInit() {&#xA;&#x9;&#x9;this.formLogin = new FormGroup({&#xA;&#x9;&#x9;&#x9;username: new FormControl('', "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Validators.required"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="),&#xA;&#x9;&#x9;&#x9;password: new FormControl('', "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Validators.required"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="),&#xA;&#x9;&#x9;&#x9;role: new FormControl('', "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Validators.required"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")&#xA;&#x9;&#x9;})&#xA;&#x9;}&#xA;&#xA;&#x9;/** Abre el modal para el registro. **/&#xA;&#x9;openModal(template: TemplateRef&lt;any>) {&#xA;&#x9;&#x9;this.modalRef = this.modalService.show(template, {class: 'modal-sm'});&#xA;&#x9;}&#xA;&#xA;&#x9;/** Metodo llamado cuando se confirma los datos de registro. **/&#xA;&#x9;confirm(): void {&#xA;&#x9;&#x9;this.autenticationService.register(this.formLogin.value);&#xA;&#x9;&#x9;this.modalRef.hide();&#xA;&#x9;}&#xA;&#xA;&#x9;/** Metodo llamado cuando se cancela el registro. **/&#xA;&#x9;decline(): void {&#xA;&#x9;&#x9;this.modalRef.hide();&#xA;&#x9;}&#xA;}&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/app/components/login/registry.component.ts">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="generate_registry_view.emtl#/0/generateRegistryView"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateRegistry/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="generate_registry_style.emtl#/0/generateRegistryStyle"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateRegistry/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <documentation xsi:type="mtl:ModuleElementDocumentation">
+        <body startPosition="193" endPosition="282" value="&#xD;&#xA;Template used for the creation of registry component&#xD;&#xA;@param aCollaborativeModel&#xD;&#xA;&#xD;&#xA;"/>
+        <parametersDocumentation name="aCollaborativeModel">
+          <body value=""/>
+        </parametersDocumentation>
+      </documentation>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateRegistry">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateRegistry"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateRegistryView">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_registry_view.emtl#/0/generateRegistryView"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateRegistryStyle">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_registry_style.emtl#/0/generateRegistryStyle"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateRegistry">
+      <details key="start" value="285"/>
+      <details key="end" value="1955"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateRegistry/%">
+      <details key="start" value="362"/>
+      <details key="end" value="363"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateRegistry/%.1">
+      <details key="start" value="363"/>
+      <details key="end" value="1849"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateRegistry/%.1/%">
+      <details key="start" value="437"/>
+      <details key="end" value="873"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateRegistry/%.1/%.1">
+      <details key="start" value="875"/>
+      <details key="end" value="878"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateRegistry/%.1/%.2">
+      <details key="start" value="881"/>
+      <details key="end" value="907"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateRegistry/%.1/%.3">
+      <details key="start" value="909"/>
+      <details key="end" value="912"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateRegistry/%.1/%.4">
+      <details key="start" value="915"/>
+      <details key="end" value="1222"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateRegistry/%.1/%.5">
+      <details key="start" value="1224"/>
+      <details key="end" value="1227"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateRegistry/%.1/%.6">
+      <details key="start" value="1230"/>
+      <details key="end" value="1249"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateRegistry/%.1/%.7">
+      <details key="start" value="1251"/>
+      <details key="end" value="1254"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateRegistry/%.1/%.8">
+      <details key="start" value="1257"/>
+      <details key="end" value="1293"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateRegistry/%.1/%.9">
+      <details key="start" value="1295"/>
+      <details key="end" value="1298"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateRegistry/%.1/%.10">
+      <details key="start" value="1301"/>
+      <details key="end" value="1320"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateRegistry/%.1/%.11">
+      <details key="start" value="1322"/>
+      <details key="end" value="1325"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateRegistry/%.1/%.12">
+      <details key="start" value="1328"/>
+      <details key="end" value="1360"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateRegistry/%.1/%.13">
+      <details key="start" value="1362"/>
+      <details key="end" value="1365"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateRegistry/%.1/%.14">
+      <details key="start" value="1368"/>
+      <details key="end" value="1387"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateRegistry/%.1/%.15">
+      <details key="start" value="1389"/>
+      <details key="end" value="1392"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateRegistry/%.1/%.16">
+      <details key="start" value="1395"/>
+      <details key="end" value="1842"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateRegistry/%.1/%.17">
+      <details key="start" value="370"/>
+      <details key="end" value="418"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateRegistry/%.1/%.18">
+      <details key="start" value="427"/>
+      <details key="end" value="434"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateRegistry/%.2">
+      <details key="start" value="1850"/>
+      <details key="end" value="1851"/>
+      <details key="line" value="56"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateRegistry/%.3">
+      <details key="start" value="1852"/>
+      <details key="end" value="1893"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateRegistry/%.3/aCollaborativeModel">
+      <details key="start" value="1873"/>
+      <details key="end" value="1892"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateRegistry/%.4">
+      <details key="start" value="1895"/>
+      <details key="end" value="1897"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateRegistry/%.5">
+      <details key="start" value="1898"/>
+      <details key="end" value="1940"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateRegistry/%.5/aCollaborativeModel">
+      <details key="start" value="1920"/>
+      <details key="end" value="1939"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateRegistry/%.6">
+      <details key="start" value="1942"/>
+      <details key="end" value="1943"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateRegistry/%.7">
+      <details key="start" value="190"/>
+      <details key="end" value="284"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateRegistry/%.7/aCollaborativeModel">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateRegistry/aCollaborativeModel">
+      <details key="start" value="319"/>
+      <details key="end" value="359"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

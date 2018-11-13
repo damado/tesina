@@ -1,0 +1,43 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_tool_view.
+ */]
+[module generate_tool_view('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_operation_button /]
+[import org::lifia::collaborativeTool::files::generate_awareness/]
+
+[template public generateToolView(aCollaborativeModel : CollaborativeModel, aTool: Tool, aSourceCollaborativeActivity: CollaborativeActivity, aOutgoings : Set(ActivityEdge))]
+
+[file ('src/app/components/tool/' + replaceSpaceByDash(aTool.name.toLower()) + '/' + replaceSpaceByDash(aTool.name.toLower()) + '.component.html', false, 'UTF-8')]
+<div class="rectangle">
+	[aTool.name/]
+	<div class="row">
+	<div class="col-md-12">
+		[for (operationTool : Operation | aTool.elementOperation.operation)]
+			[for (aCollaborativeProcessEdge : CollaborativeProcessEdge | aOutgoings.oclAsType(CollaborativeProcessEdge))]
+				[let aOperationInEdge : String = aCollaborativeProcessEdge.roleElementOperation.getName().tokenize('->')->last().toLowerCase()]
+					[if (aOperationInEdge.equalsIgnoreCase(operationTool.name.toLower()))]
+						[let aCollaborativeActivityNode : CollaborativeActivityNode = aCollaborativeProcessEdge.target.oclAsType(CollaborativeActivityNode)]
+							[generateOperationButton(aCollaborativeModel, operationTool.name, aCollaborativeProcessEdge.source.name, aCollaborativeActivityNode.collaborativeActivity)/]
+						[/let]
+					[/if]
+					[if (not aOperationInEdge.equalsIgnoreCase(operationTool.name.toLower()))]
+						[generateOperationButton(aCollaborativeModel, operationTool.name, aCollaborativeProcessEdge.source.name, null)/]
+					[/if]
+					<app-[replaceSpaceByDash(operationTool.name.toLower())/]></app-[replaceSpaceByDash(operationTool.name.toLower())/]>
+				[/let]
+			[/for]
+		[/for]
+
+		[for (anAwareness : Awareness | Awareness.allInstances())]
+			[if (anAwareness.shownIn->includes(aTool))]
+				[generateAwareness(anAwareness)/]
+				<app-[replaceSpaceByDash(anAwareness.name.toLower())/]-awareness></app-[replaceSpaceByDash(anAwareness.name.toLower())/]-awareness>
+			[/if]
+		[/for]
+	</div>
+</div>
+</div>
+[/file]
+[/template]

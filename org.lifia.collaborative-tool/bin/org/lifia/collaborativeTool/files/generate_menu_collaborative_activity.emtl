@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_menu_collaborative_activity" nsURI="org::lifia::collaborativeTool::files::generate_menu_collaborative_activity" startHeaderPosition="111" endHeaderPosition="262">
+    <documentation xsi:type="mtl:ModuleDocumentation">
+      <body startPosition="32" endPosition="108" value="&#xD;&#xA;The documentation of the module generate_menu_collaborative_activity.&#xD;&#xA;&#xD;&#xA;"/>
+    </documentation>
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_menu_collaborative_activity_view.emtl#/0"/>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_menu_collaborative_activity_style.emtl#/0"/>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0"/>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/generate_collaborative_activity_role_list.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateMenuCollaborativeActivity" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import { Component } from '@angular/core';&#xA;import { AuthenticationService } from '../../../services/authentication.service';&#xA;import { ProcessContextService } from '../../../services/process-context.service';&#xA;import { SharedComponent } from '../../shared/shared.component';&#xA;&#xA;@Component({&#xA;  selector: 'app-menu-"/>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="-"/>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="',&#xA;  templateUrl: './menu"/>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </argument>
+        </body>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".component.html',&#xA;  styleUrls: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="'./menu"/>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </argument>
+        </body>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+          <argument xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".component.css'"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;})&#xA;export class Menu"/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" ">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" ">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Component extends SharedComponent {&#xA;&#xA;&#x9;constructor(protected autenticationService: AuthenticationService, protected processContextService: ProcessContextService) {&#xA;&#x9;&#x9;super(autenticationService);&#xA;&#x9;&#x9;this.setRoles("/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/generate_collaborative_activity_role_list.emtl#/0/generateCollaborativeActivityRoleList"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xA;&#x9;}&#xA;&#xA;&#x9;ngOnInit() {&#xA;&#x9;&#x9;this.checkRolesComponent();&#xA;&#x9;&#x9;if (!this.desactive) {&#xA;&#x9;&#x9;&#x9;this.setProcesscontext();&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#xA;&#x9;public setProcesscontext(): void {&#xA;&#x9;&#x9;this.processContextService.create('"/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="', this.autenticationService.getUserLogged().getRole().toLowerCase(), this.autenticationService.getUserLogged().getUsername()).subscribe(&#xA;&#x9;&#x9;&#x9;&#x9;response => {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;console.log(&quot;response&quot;, response);&#xA;&#x9;&#x9;&#x9;&#x9;},&#xA;&#x9;&#x9;&#x9;&#x9;error => {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;console.log(&quot;Error en generar proceso&quot;, error);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;);&#xA;&#x9;}&#xA;&#xA;}&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/app/components/menucollaborativeactivity/menu">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <argument xsi:type="mtl:QueryInvocation">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+                      <argument xsi:type="ocl.ecore:OperationCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        </source>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                      </argument>
+                    </argument>
+                  </source>
+                  <argument xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+                    <argument xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+                          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                      </source>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                    </argument>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/menu">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+              </source>
+              <argument xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                </argument>
+              </argument>
+            </source>
+            <argument xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </argument>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".component.ts">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_menu_collaborative_activity_style.emtl#/0/generateMenuCollaborativeActivityStyle"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_menu_collaborative_activity_view.emtl#/0/generateMenuCollaborativeActivityView"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aWorkspaceName" referredVariable="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+      <parameter name="aCollaborativeActivity">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+      </parameter>
+      <parameter name="aWorkspaceName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateMenuCollaborativeActivity">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateMenuCollaborativeActivity"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+        <eParameters name="aWorkspaceName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateMenuCollaborativeActivityView">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_menu_collaborative_activity_view.emtl#/0/generateMenuCollaborativeActivityView"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeActivityName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="aWorkspaceName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateMenuCollaborativeActivityStyle">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_menu_collaborative_activity_style.emtl#/0/generateMenuCollaborativeActivityStyle"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeActivityName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="aWorkspaceName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="replaceSpaceByDash">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateCollaborativeActivityRoleList">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/generate_collaborative_activity_role_list.emtl#/0/generateCollaborativeActivityRoleList"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeActivity_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeActivity"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/%">
+      <details key="start" value="29"/>
+      <details key="end" value="110"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateMenuCollaborativeActivity">
+      <details key="start" value="519"/>
+      <details key="end" value="2863"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateMenuCollaborativeActivity/%">
+      <details key="start" value="686"/>
+      <details key="end" value="687"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateMenuCollaborativeActivity/%.1">
+      <details key="start" value="687"/>
+      <details key="end" value="2634"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateMenuCollaborativeActivity/%.1/%">
+      <details key="start" value="1005"/>
+      <details key="end" value="1314"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateMenuCollaborativeActivity/%.1/%.1">
+      <details key="start" value="1315"/>
+      <details key="end" value="1359"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateMenuCollaborativeActivity/%.1/%.1/%">
+      <details key="start" value="1334"/>
+      <details key="end" value="1358"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateMenuCollaborativeActivity/%.1/%.1/%/aWorkspaceName">
+      <details key="start" value="1334"/>
+      <details key="end" value="1348"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateMenuCollaborativeActivity/%.1/%.2">
+      <details key="start" value="1361"/>
+      <details key="end" value="1362"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateMenuCollaborativeActivity/%.1/%.3">
+      <details key="start" value="1363"/>
+      <details key="end" value="1420"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateMenuCollaborativeActivity/%.1/%.3/%">
+      <details key="start" value="1382"/>
+      <details key="end" value="1419"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateMenuCollaborativeActivity/%.1/%.3/%/%">
+      <details key="start" value="1382"/>
+      <details key="end" value="1409"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateMenuCollaborativeActivity/%.1/%.3/%/%/aCollaborativeActivity">
+      <details key="start" value="1382"/>
+      <details key="end" value="1404"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateMenuCollaborativeActivity/%.1/%.4">
+      <details key="start" value="1422"/>
+      <details key="end" value="1447"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateMenuCollaborativeActivity/%.1/%.5">
+      <details key="start" value="1448"/>
+      <details key="end" value="1492"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateMenuCollaborativeActivity/%.1/%.5/%">
+      <details key="start" value="1467"/>
+      <details key="end" value="1491"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateMenuCollaborativeActivity/%.1/%.5/%/aWorkspaceName">
+      <details key="start" value="1467"/>
+      <details key="end" value="1481"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateMenuCollaborativeActivity/%.1/%.6">
+      <details key="start" value="1495"/>
+      <details key="end" value="1552"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateMenuCollaborativeActivity/%.1/%.6/%">
+      <details key="start" value="1514"/>
+      <details key="end" value="1551"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateMenuCollaborativeActivity/%.1/%.6/%/%">
+      <details key="start" value="1514"/>
+      <details key="end" value="1541"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateMenuCollaborativeActivity/%.1/%.6/%/%/aCollaborativeActivity">
+      <details key="start" value="1514"/>
+      <details key="end" value="1536"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateMenuCollaborativeActivity/%.1/%.7">
+      <details key="start" value="1554"/>
+      <details key="end" value="1585"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateMenuCollaborativeActivity/%.1/%.8">
+      <details key="start" value="1587"/>
+      <details key="end" value="1590"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateMenuCollaborativeActivity/%.1/%.9">
+      <details key="start" value="1593"/>
+      <details key="end" value="1600"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateMenuCollaborativeActivity/%.1/%.10">
+      <details key="start" value="1601"/>
+      <details key="end" value="1645"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateMenuCollaborativeActivity/%.1/%.10/%">
+      <details key="start" value="1620"/>
+      <details key="end" value="1644"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateMenuCollaborativeActivity/%.1/%.10/%/aWorkspaceName">
+      <details key="start" value="1620"/>
+      <details key="end" value="1634"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateMenuCollaborativeActivity/%.1/%.11">
+      <details key="start" value="1648"/>
+      <details key="end" value="1705"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateMenuCollaborativeActivity/%.1/%.11/%">
+      <details key="start" value="1667"/>
+      <details key="end" value="1704"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateMenuCollaborativeActivity/%.1/%.11/%/%">
+      <details key="start" value="1667"/>
+      <details key="end" value="1694"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateMenuCollaborativeActivity/%.1/%.11/%/%/aCollaborativeActivity">
+      <details key="start" value="1667"/>
+      <details key="end" value="1689"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateMenuCollaborativeActivity/%.1/%.12">
+      <details key="start" value="1707"/>
+      <details key="end" value="1722"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateMenuCollaborativeActivity/%.1/%.13">
+      <details key="start" value="1724"/>
+      <details key="end" value="1727"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateMenuCollaborativeActivity/%.1/%.14">
+      <details key="start" value="1730"/>
+      <details key="end" value="1751"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateMenuCollaborativeActivity/%.1/%.15">
+      <details key="start" value="1752"/>
+      <details key="end" value="1786"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateMenuCollaborativeActivity/%.1/%.15/aWorkspaceName">
+      <details key="start" value="1752"/>
+      <details key="end" value="1766"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateMenuCollaborativeActivity/%.1/%.15/%">
+      <details key="start" value="1778"/>
+      <details key="end" value="1781"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateMenuCollaborativeActivity/%.1/%.15/%.1">
+      <details key="start" value="1783"/>
+      <details key="end" value="1785"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateMenuCollaborativeActivity/%.1/%.16">
+      <details key="start" value="1789"/>
+      <details key="end" value="1836"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateMenuCollaborativeActivity/%.1/%.16/%">
+      <details key="start" value="1789"/>
+      <details key="end" value="1816"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateMenuCollaborativeActivity/%.1/%.16/%/aCollaborativeActivity">
+      <details key="start" value="1789"/>
+      <details key="end" value="1811"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateMenuCollaborativeActivity/%.1/%.16/%.1">
+      <details key="start" value="1828"/>
+      <details key="end" value="1831"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateMenuCollaborativeActivity/%.1/%.16/%.2">
+      <details key="start" value="1833"/>
+      <details key="end" value="1835"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateMenuCollaborativeActivity/%.1/%.17">
+      <details key="start" value="1838"/>
+      <details key="end" value="2048"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateMenuCollaborativeActivity/%.1/%.18">
+      <details key="start" value="2049"/>
+      <details key="end" value="2110"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateMenuCollaborativeActivity/%.1/%.18/aCollaborativeActivity">
+      <details key="start" value="2087"/>
+      <details key="end" value="2109"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateMenuCollaborativeActivity/%.1/%.19">
+      <details key="start" value="2112"/>
+      <details key="end" value="2298"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateMenuCollaborativeActivity/%.1/%.20">
+      <details key="start" value="2299"/>
+      <details key="end" value="2336"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateMenuCollaborativeActivity/%.1/%.20/%">
+      <details key="start" value="2299"/>
+      <details key="end" value="2326"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateMenuCollaborativeActivity/%.1/%.20/%/aCollaborativeActivity">
+      <details key="start" value="2299"/>
+      <details key="end" value="2321"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateMenuCollaborativeActivity/%.1/%.21">
+      <details key="start" value="2338"/>
+      <details key="end" value="2627"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateMenuCollaborativeActivity/%.1/%.22">
+      <details key="start" value="694"/>
+      <details key="end" value="986"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%">
+      <details key="start" value="694"/>
+      <details key="end" value="968"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%">
+      <details key="start" value="694"/>
+      <details key="end" value="908"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%">
+      <details key="start" value="694"/>
+      <details key="end" value="861"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%">
+      <details key="start" value="694"/>
+      <details key="end" value="851"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%">
+      <details key="start" value="694"/>
+      <details key="end" value="791"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%/%">
+      <details key="start" value="694"/>
+      <details key="end" value="745"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%/%.1">
+      <details key="start" value="747"/>
+      <details key="end" value="791"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%/%.1/%">
+      <details key="start" value="766"/>
+      <details key="end" value="790"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%/%.1/%/aWorkspaceName">
+      <details key="start" value="766"/>
+      <details key="end" value="780"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%.1">
+      <details key="start" value="794"/>
+      <details key="end" value="851"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%.1/%">
+      <details key="start" value="813"/>
+      <details key="end" value="850"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%.1/%/%">
+      <details key="start" value="813"/>
+      <details key="end" value="840"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%/%.1/%/%/aCollaborativeActivity">
+      <details key="start" value="813"/>
+      <details key="end" value="835"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%/%.1">
+      <details key="start" value="854"/>
+      <details key="end" value="861"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%.1">
+      <details key="start" value="864"/>
+      <details key="end" value="908"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%.1/%">
+      <details key="start" value="883"/>
+      <details key="end" value="907"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%/%.1/%/aWorkspaceName">
+      <details key="start" value="883"/>
+      <details key="end" value="897"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%.1">
+      <details key="start" value="911"/>
+      <details key="end" value="968"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%.1/%">
+      <details key="start" value="930"/>
+      <details key="end" value="967"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%.1/%/%">
+      <details key="start" value="930"/>
+      <details key="end" value="957"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%/%.1/%/%/aCollaborativeActivity">
+      <details key="start" value="930"/>
+      <details key="end" value="952"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateMenuCollaborativeActivity/%.1/%.22/%.1">
+      <details key="start" value="971"/>
+      <details key="end" value="986"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateMenuCollaborativeActivity/%.1/%.23">
+      <details key="start" value="995"/>
+      <details key="end" value="1002"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateMenuCollaborativeActivity/%.2">
+      <details key="start" value="2635"/>
+      <details key="end" value="2636"/>
+      <details key="line" value="51"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateMenuCollaborativeActivity/%.3">
+      <details key="start" value="2637"/>
+      <details key="end" value="2741"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateMenuCollaborativeActivity/%.3/aCollaborativeModel">
+      <details key="start" value="2676"/>
+      <details key="end" value="2695"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateMenuCollaborativeActivity/%.3/%">
+      <details key="start" value="2697"/>
+      <details key="end" value="2724"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateMenuCollaborativeActivity/%.3/%/aCollaborativeActivity">
+      <details key="start" value="2697"/>
+      <details key="end" value="2719"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateMenuCollaborativeActivity/%.3/aWorkspaceName">
+      <details key="start" value="2726"/>
+      <details key="end" value="2740"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateMenuCollaborativeActivity/%.4">
+      <details key="start" value="2743"/>
+      <details key="end" value="2744"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateMenuCollaborativeActivity/%.5">
+      <details key="start" value="2745"/>
+      <details key="end" value="2848"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateMenuCollaborativeActivity/%.5/aCollaborativeModel">
+      <details key="start" value="2783"/>
+      <details key="end" value="2802"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateMenuCollaborativeActivity/%.5/%">
+      <details key="start" value="2804"/>
+      <details key="end" value="2831"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateMenuCollaborativeActivity/%.5/%/aCollaborativeActivity">
+      <details key="start" value="2804"/>
+      <details key="end" value="2826"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateMenuCollaborativeActivity/%.5/aWorkspaceName">
+      <details key="start" value="2833"/>
+      <details key="end" value="2847"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateMenuCollaborativeActivity/%.6">
+      <details key="start" value="2850"/>
+      <details key="end" value="2851"/>
+      <details key="line" value="54"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateMenuCollaborativeActivity/aCollaborativeModel">
+      <details key="start" value="570"/>
+      <details key="end" value="610"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateMenuCollaborativeActivity/aCollaborativeActivity">
+      <details key="start" value="612"/>
+      <details key="end" value="658"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateMenuCollaborativeActivity/aWorkspaceName">
+      <details key="start" value="660"/>
+      <details key="end" value="683"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

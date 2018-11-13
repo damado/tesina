@@ -1,0 +1,41 @@
+[comment encoding = UTF-8 /]
+[module generate_app_view('http://cm/1.0')]
+[import org::lifia::collaborativeTool::files::generate_router_link /]
+[import org::lifia::collaborativeTool::files::generate_menu_process /]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[template public generateAppView(aCollaborativeModel : CollaborativeModel)]
+
+[file ('src/app/app.component.html', false, 'UTF-8')]
+<div class="row">
+  <div class="col-md-12">
+    <div class="navbar">
+			<a href="#home">Home</a>
+
+[comment]		[for (aCollaborativeElement: CollaborativeElement | aCollaborativeModel.ownedMember->filter(CollaborativeElement))]
+		[let aWorkspace : Workspace = aCollaborativeElement]
+			<a [generateRouterLink(aCollaborativeElement.name, null)/] >[aCollaborativeElement.name/]</a>
+		[/let]
+		[/for][/comment]
+
+		[for (aCollaborativeProcess: CollaborativeProcess | aCollaborativeModel.ownedMember->filter(CollaborativeProcess))]
+			<app-menu-process-[replaceSpaceByDash(aCollaborativeProcess.name.toLower())/]></app-menu-process-[replaceSpaceByDash(aCollaborativeProcess.name.toLower())/]>
+			[generateMenuProcess(aCollaborativeProcess)/]
+		[/for]
+
+
+			<app-login></app-login>
+			<app-registry></app-registry>
+    </div>
+  </div>
+</div>
+<div class="main">
+    <h1>
+      Welcome to {{title}}!!
+    </h1>
+	<router-outlet></router-outlet>
+</div>
+
+[/file]
+
+[/template]

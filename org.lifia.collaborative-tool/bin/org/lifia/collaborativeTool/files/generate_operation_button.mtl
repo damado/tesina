@@ -1,0 +1,51 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_operation_button.
+ */]
+[module generate_operation_button('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::utils::generate_role_list /]
+[import org::lifia::collaborativeTool::files::generate_operation_button_view /]
+[import org::lifia::collaborativeTool::files::generate_operation_button_style /]
+[import org::lifia::collaborativeTool::utils::get_workspace_in_collaborative_activity /]
+
+[template public generateOperationButton(aCollaborativeModel : CollaborativeModel, aOperationName: String, aSourceCollaborativeActivityName: String, aCollaborativeActivity: CollaborativeActivity)]
+
+[file ('src/app/components/operations/' + replaceSpaceByDash(aOperationName.toLower()) + '/' + replaceSpaceByDash(aOperationName.toLower()) + '.component.ts', false, 'UTF-8')]
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { SharedComponent } from '../../shared/shared.component';
+
+@Component({
+  selector: 'app-[replaceSpaceByDash(aOperationName.toLower())/]',
+  templateUrl: './[replaceSpaceByDash(aOperationName.toLower())/].component.html',
+  styleUrls: [ '[' /]'./[replaceSpaceByDash(aOperationName.toLower())/].component.css'[ ']' /]
+})
+export class [aOperationName.replaceAll(' ', '')/]Component extends SharedComponent {
+
+	constructor(protected autenticationService: AuthenticationService, private router: Router) {
+		super(autenticationService);
+		this.setRoles([generateRoleList(aCollaborativeModel, aOperationName)/]);
+	}
+
+	ngOnInit() {
+		this.checkRolesComponent();
+	}
+
+	redirect() {
+		[if (not aCollaborativeActivity.oclIsUndefined())]
+			[let aWorkspace : Workspace = getWorkspaceInCollaborativeActivity(aCollaborativeActivity)]
+				[aSourceCollaborativeActivityName/]
+				this.router.navigate([ '[' /]'./[aWorkspace.name.toLower()/]/[aCollaborativeActivity.name.toLower()/]'[ ']' /]);
+			[/let]
+		[/if]
+	}
+
+}
+[/file]
+
+[generateOperationButtonView(aCollaborativeModel, aOperationName)/]
+[generateOperationButtonStyle(aCollaborativeModel, aOperationName)/]
+
+[/template]

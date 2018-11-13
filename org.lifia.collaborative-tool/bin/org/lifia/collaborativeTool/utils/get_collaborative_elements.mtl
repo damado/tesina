@@ -1,0 +1,4 @@
+[comment encoding = UTF-8 /]
+[module get_collaborative_elements('http://www.eclipse.org/emf/2002/Ecore', 'http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+
+[comment][query public getCollaborativesElements (aCollaborativeModel : CollaborativeModel, objCollaborative : Class) : OclType = aCollaborativeModel.ownedMember->filter(objCollaborative.eClass()) /][/comment]

@@ -1,0 +1,24 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_collaborative_activity.
+ */]
+[module generate_collaborative_activity('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+
+[import org::lifia::collaborativeTool::utils::get_workspace_in_collaborative_activity /]
+[import org::lifia::collaborativeTool::common::generate_component/]
+[import org::lifia::collaborativeTool::files::generate_workspace_view/]
+[import org::lifia::collaborativeTool::files::generate_workspace_style /]
+[import org::lifia::collaborativeTool::files::generate_collaborative_activity_style /]
+[import org::lifia::collaborativeTool::files::generate_collaborative_activity_view /]
+
+[template public generateCollaborativeActivity(aCollaborativeModel: CollaborativeModel, aCollaborativeActivity : CollaborativeActivity, aOutgoings : Set(ActivityEdge))]
+
+[generateCollaborativeActivityStyle(aCollaborativeActivity)/]
+[generateComponent(aCollaborativeActivity, aCollaborativeModel)/]
+[generateCollaborativeActivityView(aCollaborativeModel, aCollaborativeActivity, aOutgoings)/]
+
+[for (aCollaborativeProcessEdge : CollaborativeProcessEdge | aOutgoings.oclAsType(CollaborativeProcessEdge))]
+	
+[/for]
+
+[/template]

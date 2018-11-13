@@ -1,0 +1,38 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_menu_process.
+ */]
+[module generate_menu_process('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_menu_process_view/]
+[import org::lifia::collaborativeTool::files::generate_menu_process_style/]
+[import org::lifia::collaborativeTool::utils::generate_role_list_collaborative_process_init /]
+
+[template public generateMenuProcess(aCollaborativeProcess : CollaborativeProcess)]
+
+[file ('src/app/components/menucollaborativeprocess/menuprocess'+ replaceSpaceByDash(aCollaborativeProcess.name.toLower()) + '/menuprocess' + replaceSpaceByDash(aCollaborativeProcess.name.toLower()) + '.component.ts', false, 'UTF-8')]
+import { Component } from '@angular/core';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { SharedComponent } from '../../shared/shared.component';
+
+@Component({
+  selector: 'app-menu-process-[replaceSpaceByDash(aCollaborativeProcess.name.toLower())/]',
+  templateUrl: './menuprocess[replaceSpaceByDash(aCollaborativeProcess.name.toLower())/].component.html',
+  styleUrls: [ '[' /]'./menuprocess[replaceSpaceByDash(aCollaborativeProcess.name.toLower())/].component.css'[ ']' /]
+})
+export class MenuProcess[aCollaborativeProcess.name.replaceAll(' ', '')/]Component extends SharedComponent {
+
+	constructor(protected autenticationService: AuthenticationService) {
+		super(autenticationService);
+	}
+
+	ngOnInit() {
+		this.setRoles([generateRoleListCollaborativeProcessInit(aCollaborativeProcess)/]);
+	}
+
+}
+[/file]
+
+[generateMenuProcessView(aCollaborativeProcess)/]
+[generateMenuProcessStyle(aCollaborativeProcess)/]
+[/template]

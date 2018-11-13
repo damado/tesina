@@ -1,0 +1,44 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_registry_view.
+ */]
+[module generate_registry_view('http://cm/1.0')]
+
+
+[**
+ * The documentation of the template generateRegistryView.
+ * @param aCollaborativeModel
+ */]
+[template public generateRegistryView(aCollaborativeModel : CollaborativeModel)]
+
+[file ('src/app/components/login/registry.component.html', false, 'UTF-8')]
+<a class="link-login" (click)="openModal(templateRegistry)">Sign in</a>
+
+<ng-template #templateRegistry>
+  <div class="modal-body text-center">
+  		<label>Please enter the following information</label>
+	    <form  [ '[' /]formGroup[ ']' /]="formLogin">
+	    	<div class="form-group">
+		    	<label for="username">Username</label>
+		    	<input type="text" name="username" class="form-control" formControlName="username">
+	    	</div>
+	    	<div class="form-group"> 
+		    	<label for="password">Password</label>
+		    	<input type="password" name="password" class="form-control" formControlName="password">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="role">Role</label>
+				<select class="form-control" id="role" name="role" formControlName="role">
+					[for (aCollaborationRole : CollaborationRole | aCollaborativeModel.ownedMember->filter(CollaborationRole))]
+						<option>[aCollaborationRole.name/]</option>
+					[/for]
+				</select>
+	    	</div>
+	    </form>
+	    <button type="submit" class="btn btn-primary" (click)="confirm()" >Confirm</button>
+	    <button type="button" class="btn btn-default" (click)="decline()" >Cancel</button>
+  </div>
+</ng-template>
+
+[/file]
+[/template]

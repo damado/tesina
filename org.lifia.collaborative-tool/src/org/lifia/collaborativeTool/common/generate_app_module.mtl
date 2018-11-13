@@ -1,0 +1,109 @@
+[comment encoding = UTF-8 /]
+[module generate_app_module('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::lifia::collaborativeTool::utils::get_import/]
+[import org::lifia::collaborativeTool::utils::get_component_name/]
+[import org::lifia::collaborativeTool::utils::get_import_by_string /]
+
+[template public generateAppModule(aCollaborativeModel : CollaborativeModel)]
+[file ('src/app/app.module.ts', false, 'UTF-8')]
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routes';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { RegistryComponent } from './components/login/registry.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthenticationService } from './services/authentication.service';
+import { WebsocketService } from './services/websocket.service';
+import { ProcessContextService } from './services/process-context.service';
+[for (aCollaborativeElement: CollaborativeElement | aCollaborativeModel.ownedMember->filter(CollaborativeElement))]
+[let aWorkspace : Workspace = aCollaborativeElement]
+[getImport(aWorkspace)/]
+[for (operationWorkspace : Operation | aWorkspace.elementOperation.operation)]
+[getImportByString(operationWorkspace.name, 'operations')/]
+[/for]
+[/let]
+[let aCollaborativeActivity : CollaborativeActivity = aCollaborativeElement]
+[getImport(aCollaborativeActivity)/]
+[/let]
+[let aTool : Tool = aCollaborativeElement]
+[for (operationTool : Operation | aTool.elementOperation.operation)]
+[getImportByString(operationTool.name, 'operations')/]
+[/for]
+[getImport(aTool)/]
+[/let]
+[/for]
+[for (aBelongsRelationship : BelongsRelationship | aCollaborativeModel.ownedMember->filter(BelongsRelationship))]
+[let workspaceBelong: Workspace = aBelongsRelationship.memberEnd.type->filter(Workspace)->first()]
+[let aCollaborativeActivity: CollaborativeActivity = aBelongsRelationship.memberEnd.type->filter(CollaborativeActivity)->first()]
+[getImportByString('Menu' + workspaceBelong.name + aCollaborativeActivity.name, 'menucollaborativeactivity')/]
+[/let]
+[/let]
+[/for]
+[for (aCollaborativeProcess: CollaborativeProcess | aCollaborativeModel.ownedMember->filter(CollaborativeProcess))]
+[getImportByString('MenuProcess' + aCollaborativeProcess.name , 'menucollaborativeprocess')/]
+[/for]
+[for (anAwareness : Awareness | Awareness.allInstances())]
+[getImportByString(anAwareness.name + 'Awareness' , 'awareness')/]
+[/for]
+
+@NgModule({
+	declarations:  [ '[' /]
+		AppComponent,
+		RegistryComponent,
+		LoginComponent,
+	[for (aCollaborativeElement: CollaborativeElement | aCollaborativeModel.ownedMember->filter(CollaborativeElement))]
+		[let aWorkspace : Workspace = aCollaborativeElement]
+		[getComponentName(aCollaborativeElement.name)/],
+		[for (operationWorkspace : Operation | aWorkspace.elementOperation.operation)]
+		[getComponentName(operationWorkspace.name)/],
+		[/for]
+		[/let]
+		[let aCollaborativeActivity : CollaborativeActivity = aCollaborativeElement]
+		[getComponentName(aCollaborativeActivity.name)/],
+		[/let]
+		[let aTool : Tool = aCollaborativeElement]
+		[getComponentName(aTool.name)/],
+		[for (operationTool : Operation | aTool.elementOperation.operation)]
+		[getComponentName(operationTool.name)/],
+		[/for]
+		[/let]
+	[/for]
+	[for (aBelongsRelationship : BelongsRelationship | aCollaborativeModel.ownedMember->filter(BelongsRelationship))]
+		[let workspaceBelong: Workspace = aBelongsRelationship.memberEnd.type->filter(Workspace)->first()]
+		[let aCollaborativeActivity: CollaborativeActivity = aBelongsRelationship.memberEnd.type->filter(CollaborativeActivity)->first()]
+		[getComponentName('Menu' + workspaceBelong.name + aCollaborativeActivity.name)/],
+		[/let]
+		[/let]
+	[/for]
+	[for (aCollaborativeProcess: CollaborativeProcess | aCollaborativeModel.ownedMember->filter(CollaborativeProcess))]
+		[getComponentName('MenuProcess' + aCollaborativeProcess.name)/],
+	[/for]
+	[for (anAwareness : Awareness | Awareness.allInstances())]
+		[getComponentName(anAwareness.name + 'Awareness')/],
+	[/for]
+	[ ']' /],
+	imports: [ '[' /]
+		BrowserModule,
+		AppRoutes,
+		ModalModule.forRoot(),
+		ReactiveFormsModule,
+		FormsModule,
+		HttpModule
+	[ ']' /],
+	providers: [ '[' /]
+		BsModalService,
+		AuthenticationService,
+		WebsocketService,
+		ProcessContextService
+[ ']' /],
+	bootstrap: [ '[' /]
+		AppComponent,
+	[ ']' /]
+})
+export class AppModule { }
+[/file]
+[/template]

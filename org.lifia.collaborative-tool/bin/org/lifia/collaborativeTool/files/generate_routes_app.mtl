@@ -1,0 +1,40 @@
+[comment encoding = UTF-8 /]
+[module generate_routes_app('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::lifia::collaborativeTool::utils::get_import/]
+[import org::lifia::collaborativeTool::utils::get_component_name/]
+[import org::lifia::collaborativeTool::common::generate_component/]
+[import org::lifia::collaborativeTool::files::generate_routes_workspace /]
+
+[template public generateRoutesApp(aCollaborativeModel : CollaborativeModel)]
+
+[file ('src/app/app.routes.ts', false, 'UTF-8')]
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+[for (aCollaborativeElement: CollaborativeElement | aCollaborativeModel.ownedMember->filter(CollaborativeElement))]
+[let aWorkspace : Workspace = aCollaborativeElement]
+[getImport(aCollaborativeElement)/]
+[/let]
+[let aCollaborativeActivity : CollaborativeActivity = aCollaborativeElement]
+[getImport(aCollaborativeActivity)/]
+[/let]
+[/for]
+
+const routes: Routes = [ '[' /]
+	{ path: '',  redirectTo: 'home', pathMatch: 'full' },
+[for (aCollaborativeElement: CollaborativeElement | aCollaborativeModel.ownedMember->filter(CollaborativeElement))]
+[let aWorkspace : Workspace = aCollaborativeElement]
+	[generateRoutesWorkspace(aCollaborativeModel, aWorkspace)/]
+[/let]
+[/for]
+[ ']' /];
+
+@NgModule({
+  imports: [ '[' /]
+    RouterModule.forRoot(routes)
+  [ ']' /],
+  exports: [ '[' /] RouterModule [ ']' /]
+})
+
+export class AppRoutes { }
+[/file]
+[/template]

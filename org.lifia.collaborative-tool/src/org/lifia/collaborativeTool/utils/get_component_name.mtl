@@ -1,0 +1,5 @@
+[comment encoding = UTF-8 /]
+[module get_component_name('http://cm/1.0')]
+
+
+[query public getComponentName (aCollaborativeElementName : String) : String = aCollaborativeElementName.replaceAll(' ', '') + 'Component'/]

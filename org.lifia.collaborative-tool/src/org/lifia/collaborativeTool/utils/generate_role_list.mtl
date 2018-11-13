@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateRoleList.
+ */]
+[module generate_role_list('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+
+[template public generateRoleList(aCollaborativeModel : CollaborativeModel, aCollaborativeElementName : String)]
+[ '[' /][for (aCollaborationRole : CollaborationRole | aCollaborativeModel.ownedMember->filter(CollaborationRole))][for (operationRole : Operation | aCollaborationRole.assignedRoleElementOperation.elementOperation.operation) separator(',')][if (operationRole.name.equalsIgnoreCase(aCollaborativeElementName))]'[aCollaborationRole.name/]',[/if][/for][/for][ ']' /]
+[/template]

@@ -1,0 +1,77 @@
+[comment encoding = UTF-8 /]
+[module generate_login('http://cm/1.0')]
+[import org::lifia::collaborativeTool::files::generate_login_view /]
+[import org::lifia::collaborativeTool::files::generate_login_style /]
+
+
+[template public generateLogin(aCollaborativeModel : CollaborativeModel)]
+
+[file ('src/app/components/login/login.component.ts', false, 'UTF-8')]
+import { Component, TemplateRef, OnInit } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from '../../services/authentication.service';
+import { User } from './../../class/user';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: [ '[' /]'./login.component.css'[ ']' /]
+})
+
+export class LoginComponent implements OnInit {
+
+	public modalRef: BsModalRef;
+	public formLogin: FormGroup;
+	public userLogged: User = null;
+	public error: boolean = false;
+
+	constructor(private modalService: BsModalService, private autenticationService: AuthenticationService) {}
+
+	ngOnInit() {
+		this.formLogin = new FormGroup({
+			username: new FormControl('', [ '[' /]Validators.required[ ']' /]),
+			password: new FormControl('', [ '[' /]Validators.required[ ']' /])
+		});
+		this.userLogged = this.autenticationService.getUserLogged();
+	}
+
+	/** Abre el modal para el login. **/
+	public openModal(template: TemplateRef<any>) {
+		this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+	}
+
+	/** Metodo llamado cuando se confirma los datos del login. **/
+	public confirm(): void {
+		this.autenticationService.login(this.formLogin.value).subscribe((user) => {
+			if (user) {
+				this.userLogged = user;
+				this.modalRef.hide();
+				return;
+			}
+			this.error = true;
+			return;
+		});
+	}
+
+	/** Metodo llamado cuando se cancela el login. **/
+	public decline(): void {
+		this.error = false;
+		this.modalRef.hide();
+	}
+
+	/** Metodo llamado cuando se desloguea un usuario	**/
+	public logout() {
+		this.userLogged = null;
+	}
+
+}
+
+[/file]
+
+[generateLoginView(aCollaborativeModel)/]
+
+[generateLoginStyle(aCollaborativeModel)/]
+
+[/template]

@@ -1,0 +1,19 @@
+[comment encoding = UTF-8 /]
+[module generate_routes_workspace('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML', 'http://www.eclipse.org/emf/2002/Ecore')]
+[import org::lifia::collaborativeTool::utils::get_component_name/]
+
+[template public generateRoutesWorkspace(aCollaborativeModel : CollaborativeModel, aCollaborativeElement : CollaborativeElement)]
+{ path: '[aCollaborativeElement.name.toLower()/]', component: [getComponentName(aCollaborativeElement.name)/] ,
+	children: [ '[' /]
+		[for (property: Property | aCollaborativeModel.ownedMember->filter(BelongsRelationship).ownedMember->filter(Property))]
+			[if (property.type.eClass().name.equalsIgnoreCase('Workspace'))]
+				[for (sibling : Property | property.siblings()->filter(Property))]
+					[if (sibling.type.eClass().name.equalsIgnoreCase('CollaborativeActivity'))]
+						{ path: '[sibling.type.name.toLower()/]', component: [sibling.type.name.replaceAll(' ', '') + 'Component'/] },
+					[/if]
+				[/for]
+			[/if]
+		[/for]	
+	[ ']' /]
+},
+[/template]

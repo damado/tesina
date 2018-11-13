@@ -1,0 +1,37 @@
+[comment encoding = UTF-8 /]
+[module generate_component('http://www.eclipse.org/uml2/3.0.0/UML', 'http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_workspace_view/]
+[import org::lifia::collaborativeTool::files::generate_workspace_style /]
+[import org::lifia::collaborativeTool::files::generate_collaborative_activity_style /]
+[import org::lifia::collaborativeTool::files::generate_collaborative_activity_view /]
+[import org::lifia::collaborativeTool::utils::generate_role_list /]
+
+[template public generateComponent(aCollaborativeElement : CollaborativeElement, aCollaborativeModel : CollaborativeModel)]
+[file ('src/app/components/' + replaceSpaceByDash(aCollaborativeElement.eClass().name.toLower()) + '/' + replaceSpaceByDash(aCollaborativeElement.name.toLower()) + '/' + replaceSpaceByDash(aCollaborativeElement.name.toLower()) + '.component.ts', false, 'UTF-8')]
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-[replaceSpaceByDash(aCollaborativeElement.name.toLower())/]',
+  templateUrl: './[replaceSpaceByDash(aCollaborativeElement.name.toLower())/].component.html',
+  styleUrls: [ '[' /]'./[replaceSpaceByDash(aCollaborativeElement.name.toLower())/].component.css'[ ']' /]
+})
+export class [aCollaborativeElement.name.replaceAll(' ', '')/]Component {
+
+	constructor() {
+	}
+
+}
+[/file]
+
+[comment][let aWorkspace : Workspace = aCollaborativeElement]
+	[generateWorkspaceView(aCollaborativeModel, aWorkspace)/]
+	[generateWorkspaceStyle(aWorkspace)/]
+[/let][/comment]
+
+[comment][let aCollaborativeActivity : CollaborativeActivity = aCollaborativeElement]
+	[generateCollaborativeActivityView(aCollaborativeModel, aCollaborativeActivity)/]
+	[generateCollaborativeActivityStyle(aCollaborativeActivity)/]
+[/let][/comment]
+
+[/template]

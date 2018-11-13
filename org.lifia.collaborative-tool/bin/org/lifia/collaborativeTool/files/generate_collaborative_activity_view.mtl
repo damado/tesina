@@ -1,0 +1,21 @@
+[comment encoding = UTF-8 /]
+[module generate_collaborative_activity_view('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_tool/]
+
+[template public generateCollaborativeActivityView(aCollaborativeModel : CollaborativeModel, aCollaborativeActivity : CollaborativeActivity, aOutgoings : Set(ActivityEdge))]
+
+[file ('src/app/components/collaborativeactivity/' + replaceSpaceByDash(aCollaborativeActivity.name.toLower()) + '/'+ replaceSpaceByDash(aCollaborativeActivity.name.toLower()) +'.component.html', false, 'UTF-8')]
+
+[for (aUseRelationship : UseRelationship | aCollaborativeModel.ownedMember->filter(UseRelationship))]
+	[let aCollaborativeActivityInUse: CollaborativeActivity = aUseRelationship.memberEnd.type->filter(CollaborativeActivity)->first()]
+		[if (aCollaborativeActivityInUse.name.equalsIgnoreCase(aCollaborativeActivity.name))]
+			[let aTool: Tool = aUseRelationship.memberEnd.type->filter(Tool)->first()]
+				[generateTool(aCollaborativeModel, aTool,aCollaborativeActivity, aOutgoings)/]
+				<app-[replaceSpaceByDash(aTool.name.toLower())/]></app-[replaceSpaceByDash(aTool.name.toLower())/]>
+			[/let]
+		[/if]
+	[/let]
+[/for]
+[/file]
+[/template]

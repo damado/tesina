@@ -1,0 +1,2416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_app_module" nsURI="org::lifia::collaborativeTool::common::generate_app_module" startHeaderPosition="29" endHeaderPosition="172">
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    </input>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import.emtl#/0"/>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0"/>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import_by_string.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateAppModule" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import { BrowserModule } from '@angular/platform-browser';&#xA;import { NgModule } from '@angular/core';&#xA;import { HttpModule } from '@angular/http';&#xA;import { FormsModule, ReactiveFormsModule } from '@angular/forms';&#xA;import { AppComponent } from './app.component';&#xA;import { AppRoutes } from './app.routes';&#xA;import { ModalModule } from 'ngx-bootstrap/modal';&#xA;import { BsModalService } from 'ngx-bootstrap/modal';&#xA;import { RegistryComponent } from './components/login/registry.component';&#xA;import { LoginComponent } from './components/login/login.component';&#xA;import { AuthenticationService } from './services/authentication.service';&#xA;import { WebsocketService } from './services/websocket.service';&#xA;import { ProcessContextService } from './services/process-context.service';&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import.emtl#/0/getImport"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aWorkspace" referredVariable="/0/generateAppModule/%/%.1/%/aWorkspace">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <body xsi:type="mtl:ForBlock">
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import_by_string.emtl#/0/getImportByString"/>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="operationWorkspace" referredVariable="/0/generateAppModule/%/%.1/%/%.2/operationWorkspace">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </argument>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="operations">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+              <loopVariable name="operationWorkspace">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+              </loopVariable>
+              <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Operation)">
+                <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(ElementOperation)">
+                  <source xsi:type="ocl.ecore:VariableExp" name="aWorkspace" referredVariable="/0/generateAppModule/%/%.1/%/aWorkspace">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeElement/elementOperation"/>
+                </source>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.1/%/%.2/collect/temp1">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//ElementOperation/operation"/>
+                </body>
+                <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                </iterator>
+              </iterSet>
+            </body>
+            <letVariable name="aWorkspace">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+              <initExpression xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppModule/%/%.1/aCollaborativeElement">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import.emtl#/0/getImport"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateAppModule/%/%.1/%.1/aCollaborativeActivity">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <letVariable name="aCollaborativeActivity">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              <initExpression xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppModule/%/%.1/aCollaborativeElement">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="mtl:ForBlock">
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import_by_string.emtl#/0/getImportByString"/>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateAppModule/%/%.1/%.2/%/operationTool">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </argument>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="operations">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+              <loopVariable name="operationTool">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+              </loopVariable>
+              <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Operation)">
+                <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(ElementOperation)">
+                  <source xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateAppModule/%/%.1/%.2/aTool">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeElement/elementOperation"/>
+                </source>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.1/%.2/%/collect/temp2">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//ElementOperation/operation"/>
+                </body>
+                <iterator xsi:type="ocl.ecore:Variable" name="temp2">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                </iterator>
+              </iterSet>
+            </body>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import.emtl#/0/getImport"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateAppModule/%/%.1/%.2/aTool">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <letVariable name="aTool">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+              <initExpression xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppModule/%/%.1/aCollaborativeElement">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <loopVariable name="aCollaborativeElement">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(CollaborativeElement)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/Set(NamedElement)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppModule/aCollaborativeModel">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/CollaborativeElement">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="mtl:LetBlock">
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import_by_string.emtl#/0/getImportByString"/>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Menu">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="workspaceBelong" referredVariable="/0/generateAppModule/%/%.2/%/workspaceBelong">
+                        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                    </argument>
+                  </source>
+                  <argument xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity">
+                      <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                  </argument>
+                </argument>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="menucollaborativeactivity">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+              <letVariable name="aCollaborativeActivity">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" eType="/8/Sequence(CollaborativeActivity)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+                    <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Type)">
+                      <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Property)">
+                        <source xsi:type="ocl.ecore:VariableExp" name="aBelongsRelationship" referredVariable="/0/generateAppModule/%/%.2/aBelongsRelationship">
+                          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association/memberEnd"/>
+                      </source>
+                      <body xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Type"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/collect/temp3">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//TypedElement/type"/>
+                      </body>
+                      <iterator xsi:type="ocl.ecore:Variable" name="temp3">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                      </iterator>
+                    </source>
+                    <argument xsi:type="ocl.ecore:TypeExp" eType="/9/CollaborativeActivity">
+                      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                    </argument>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/first"/>
+                </initExpression>
+              </letVariable>
+            </body>
+            <letVariable name="workspaceBelong">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+              <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" eType="/8/Sequence(Workspace)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+                  <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Type)">
+                    <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Property)">
+                      <source xsi:type="ocl.ecore:VariableExp" name="aBelongsRelationship" referredVariable="/0/generateAppModule/%/%.2/aBelongsRelationship">
+                        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association/memberEnd"/>
+                    </source>
+                    <body xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Type"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/collect/temp4">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//TypedElement/type"/>
+                    </body>
+                    <iterator xsi:type="ocl.ecore:Variable" name="temp4">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                    </iterator>
+                  </source>
+                  <argument xsi:type="ocl.ecore:TypeExp" eType="/9/Workspace">
+                    <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                  </argument>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/first"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <loopVariable name="aBelongsRelationship">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(BelongsRelationship)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/Set(NamedElement)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppModule/aCollaborativeModel">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/BelongsRelationship">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import_by_string.emtl#/0/getImportByString"/>
+            <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="MenuProcess">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </source>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcess" referredVariable="/0/generateAppModule/%/%.3/aCollaborativeProcess">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+              </argument>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="menucollaborativeprocess">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <loopVariable name="aCollaborativeProcess">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(CollaborativeProcess)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/Set(NamedElement)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppModule/aCollaborativeModel">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/CollaborativeProcess">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import_by_string.emtl#/0/getImportByString"/>
+            <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="anAwareness" referredVariable="/0/generateAppModule/%/%.4/anAwareness">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Awareness">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="awareness">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <loopVariable name="anAwareness">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(Awareness)">
+            <source xsi:type="ocl.ecore:TypeExp" eType="/9/Awareness">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType_Class/allInstances"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;@NgModule({&#xA;&#x9;declarations:  "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;AppComponent,&#xA;&#x9;&#x9;RegistryComponent,&#xA;&#x9;&#x9;LoginComponent,&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppModule/%/%.8/aCollaborativeElement">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+            <body xsi:type="mtl:ForBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="operationWorkspace" referredVariable="/0/generateAppModule/%/%.8/%/%.3/operationWorkspace">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+              <loopVariable name="operationWorkspace">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+              </loopVariable>
+              <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Operation)">
+                <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(ElementOperation)">
+                  <source xsi:type="ocl.ecore:VariableExp" name="aWorkspace" referredVariable="/0/generateAppModule/%/%.8/%/aWorkspace">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeElement/elementOperation"/>
+                </source>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.8/%/%.3/collect/temp5">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//ElementOperation/operation"/>
+                </body>
+                <iterator xsi:type="ocl.ecore:Variable" name="temp5">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                </iterator>
+              </iterSet>
+            </body>
+            <letVariable name="aWorkspace">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+              <initExpression xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppModule/%/%.8/aCollaborativeElement">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateAppModule/%/%.8/%.1/aCollaborativeActivity">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+            <letVariable name="aCollaborativeActivity">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              <initExpression xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppModule/%/%.8/aCollaborativeElement">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateAppModule/%/%.8/%.2/aTool">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+            <body xsi:type="mtl:ForBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateAppModule/%/%.8/%.2/%.3/operationTool">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+              <loopVariable name="operationTool">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+              </loopVariable>
+              <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Operation)">
+                <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(ElementOperation)">
+                  <source xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateAppModule/%/%.8/%.2/aTool">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeElement/elementOperation"/>
+                </source>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.8/%.2/%.3/collect/temp6">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//ElementOperation/operation"/>
+                </body>
+                <iterator xsi:type="ocl.ecore:Variable" name="temp6">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+                </iterator>
+              </iterSet>
+            </body>
+            <letVariable name="aTool">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+              <initExpression xsi:type="ocl.ecore:VariableExp" name="aCollaborativeElement" referredVariable="/0/generateAppModule/%/%.8/aCollaborativeElement">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <loopVariable name="aCollaborativeElement">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(CollaborativeElement)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/Set(NamedElement)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppModule/aCollaborativeModel">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/CollaborativeElement">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="mtl:LetBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Menu">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="workspaceBelong" referredVariable="/0/generateAppModule/%/%.9/%/workspaceBelong">
+                        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                    </argument>
+                  </source>
+                  <argument xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity">
+                      <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                  </argument>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+              <letVariable name="aCollaborativeActivity">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" eType="/8/Sequence(CollaborativeActivity)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+                    <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Type)">
+                      <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Property)">
+                        <source xsi:type="ocl.ecore:VariableExp" name="aBelongsRelationship" referredVariable="/0/generateAppModule/%/%.9/aBelongsRelationship">
+                          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association/memberEnd"/>
+                      </source>
+                      <body xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Type"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/collect/temp7">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//TypedElement/type"/>
+                      </body>
+                      <iterator xsi:type="ocl.ecore:Variable" name="temp7">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                      </iterator>
+                    </source>
+                    <argument xsi:type="ocl.ecore:TypeExp" eType="/9/CollaborativeActivity">
+                      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                    </argument>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/first"/>
+                </initExpression>
+              </letVariable>
+            </body>
+            <letVariable name="workspaceBelong">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+              <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" eType="/8/Sequence(Workspace)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+                  <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/8/Sequence(Type)">
+                    <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Property)">
+                      <source xsi:type="ocl.ecore:VariableExp" name="aBelongsRelationship" referredVariable="/0/generateAppModule/%/%.9/aBelongsRelationship">
+                        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association/memberEnd"/>
+                    </source>
+                    <body xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Type"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/collect/temp8">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//TypedElement/type"/>
+                    </body>
+                    <iterator xsi:type="ocl.ecore:Variable" name="temp8">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+                    </iterator>
+                  </source>
+                  <argument xsi:type="ocl.ecore:TypeExp" eType="/9/Workspace">
+                    <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+                  </argument>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/first"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <loopVariable name="aBelongsRelationship">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(BelongsRelationship)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/Set(NamedElement)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppModule/aCollaborativeModel">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/BelongsRelationship">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+          <body xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+            <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="MenuProcess">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </source>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcess" referredVariable="/0/generateAppModule/%/%.10/aCollaborativeProcess">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+              </argument>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+          <loopVariable name="aCollaborativeProcess">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(CollaborativeProcess)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/Set(NamedElement)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateAppModule/aCollaborativeModel">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/CollaborativeProcess">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+          <body xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+            <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="anAwareness" referredVariable="/0/generateAppModule/%/%.11/anAwareness">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Awareness">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+          <loopVariable name="anAwareness">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/Set(Awareness)">
+            <source xsi:type="ocl.ecore:TypeExp" eType="/9/Awareness">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType_Class/allInstances"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;&#x9;imports: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;BrowserModule,&#xA;&#x9;&#x9;AppRoutes,&#xA;&#x9;&#x9;ModalModule.forRoot(),&#xA;&#x9;&#x9;ReactiveFormsModule,&#xA;&#x9;&#x9;FormsModule,&#xA;&#x9;&#x9;HttpModule&#xA;&#x9;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;&#x9;providers: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;BsModalService,&#xA;&#x9;&#x9;AuthenticationService,&#xA;&#x9;&#x9;WebsocketService,&#xA;&#x9;&#x9;ProcessContextService&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;&#x9;bootstrap: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;AppComponent,&#xA;&#x9;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;})&#xA;export class AppModule { }&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/app/app.module.ts">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateAppModule">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateAppModule"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getImport">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import.emtl#/0/getImport"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeElement">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getComponentName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_component_name.emtl#/0/getComponentName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeElementName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getImportByString">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/get_import_by_string.emtl#/0/getImportByString"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="aDirectoryName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+      <eOperations name="filter">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:CollectionType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+        <eParameters name="filter">
+          <eType xsi:type="ocl.ecore:TypeType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeElement"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(NamedElement)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(CollaborativeElement)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(ElementOperation)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Operation)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(BelongsRelationship)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Property)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Type)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Type"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Workspace)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(CollaborativeActivity)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(CollaborativeProcess)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Awareness)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeElement">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="BelongsRelationship">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Workspace">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Workspace"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeActivity">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeProcess">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Awareness">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//BelongsRelationship"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateAppModule">
+      <details key="start" value="313"/>
+      <details key="end" value="4665"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateAppModule/%">
+      <details key="start" value="391"/>
+      <details key="end" value="4653"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateAppModule/%/%">
+      <details key="start" value="440"/>
+      <details key="end" value="1207"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateAppModule/%/%.1">
+      <details key="start" value="1207"/>
+      <details key="end" value="1882"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateAppModule/%/%.1/%">
+      <details key="start" value="1323"/>
+      <details key="end" value="1553"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateAppModule/%/%.1/%/%">
+      <details key="start" value="1377"/>
+      <details key="end" value="1398"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateAppModule/%/%.1/%/%/aWorkspace">
+      <details key="start" value="1387"/>
+      <details key="end" value="1397"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateAppModule/%/%.1/%/%.1">
+      <details key="start" value="1400"/>
+      <details key="end" value="1401"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateAppModule/%/%.1/%/%.2">
+      <details key="start" value="1401"/>
+      <details key="end" value="1546"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateAppModule/%/%.1/%/%.2/%">
+      <details key="start" value="1481"/>
+      <details key="end" value="1537"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateAppModule/%/%.1/%/%.2/%/%">
+      <details key="start" value="1499"/>
+      <details key="end" value="1522"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateAppModule/%/%.1/%/%.2/%/%/operationWorkspace">
+      <details key="start" value="1499"/>
+      <details key="end" value="1517"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateAppModule/%/%.1/%/%.2/%/%.1">
+      <details key="start" value="1524"/>
+      <details key="end" value="1536"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateAppModule/%/%.1/%/%.2/%.1">
+      <details key="start" value="1539"/>
+      <details key="end" value="1540"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateAppModule/%/%.1/%/%.2/operationWorkspace">
+      <details key="start" value="1407"/>
+      <details key="end" value="1437"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateAppModule/%/%.1/%/%.2/collect">
+      <details key="start" value="1440"/>
+      <details key="end" value="1477"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateAppModule/%/%.1/%/%.2/collect/%">
+      <details key="start" value="1440"/>
+      <details key="end" value="1467"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateAppModule/%/%.1/%/%.2/collect/%/aWorkspace">
+      <details key="start" value="1440"/>
+      <details key="end" value="1450"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateAppModule/%/%.1/%/%.2/collect/%.1">
+      <details key="start" value="1468"/>
+      <details key="end" value="1477"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateAppModule/%/%.1/%/%.2/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateAppModule/%/%.1/%/%.2/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateAppModule/%/%.1/%/aWorkspace">
+      <details key="start" value="1328"/>
+      <details key="end" value="1374"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateAppModule/%/%.1/%/aWorkspace/aCollaborativeElement">
+      <details key="start" value="1354"/>
+      <details key="end" value="1375"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateAppModule/%/%.1/%.1">
+      <details key="start" value="1554"/>
+      <details key="end" value="1674"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateAppModule/%/%.1/%.1/%">
+      <details key="start" value="1632"/>
+      <details key="end" value="1665"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateAppModule/%/%.1/%.1/%/aCollaborativeActivity">
+      <details key="start" value="1642"/>
+      <details key="end" value="1664"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateAppModule/%/%.1/%.1/%.1">
+      <details key="start" value="1667"/>
+      <details key="end" value="1668"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateAppModule/%/%.1/%.1/aCollaborativeActivity">
+      <details key="start" value="1559"/>
+      <details key="end" value="1629"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateAppModule/%/%.1/%.1/aCollaborativeActivity/aCollaborativeElement">
+      <details key="start" value="1609"/>
+      <details key="end" value="1630"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateAppModule/%/%.1/%.2">
+      <details key="start" value="1675"/>
+      <details key="end" value="1875"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateAppModule/%/%.1/%.2/%">
+      <details key="start" value="1718"/>
+      <details key="end" value="1848"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateAppModule/%/%.1/%.2/%/%">
+      <details key="start" value="1788"/>
+      <details key="end" value="1839"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateAppModule/%/%.1/%.2/%/%/%">
+      <details key="start" value="1806"/>
+      <details key="end" value="1824"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateAppModule/%/%.1/%.2/%/%/%/operationTool">
+      <details key="start" value="1806"/>
+      <details key="end" value="1819"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateAppModule/%/%.1/%.2/%/%/%.1">
+      <details key="start" value="1826"/>
+      <details key="end" value="1838"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateAppModule/%/%.1/%.2/%/%.1">
+      <details key="start" value="1841"/>
+      <details key="end" value="1842"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateAppModule/%/%.1/%.2/%/operationTool">
+      <details key="start" value="1724"/>
+      <details key="end" value="1749"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateAppModule/%/%.1/%.2/%/collect">
+      <details key="start" value="1752"/>
+      <details key="end" value="1784"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateAppModule/%/%.1/%.2/%/collect/%">
+      <details key="start" value="1752"/>
+      <details key="end" value="1774"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateAppModule/%/%.1/%.2/%/collect/%/aTool">
+      <details key="start" value="1752"/>
+      <details key="end" value="1757"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateAppModule/%/%.1/%.2/%/collect/%.1">
+      <details key="start" value="1775"/>
+      <details key="end" value="1784"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateAppModule/%/%.1/%.2/%/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateAppModule/%/%.1/%.2/%/collect/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateAppModule/%/%.1/%.2/%.1">
+      <details key="start" value="1850"/>
+      <details key="end" value="1866"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateAppModule/%/%.1/%.2/%.1/aTool">
+      <details key="start" value="1860"/>
+      <details key="end" value="1865"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateAppModule/%/%.1/%.2/%.2">
+      <details key="start" value="1868"/>
+      <details key="end" value="1869"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateAppModule/%/%.1/%.2/aTool">
+      <details key="start" value="1680"/>
+      <details key="end" value="1716"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateAppModule/%/%.1/%.2/aTool/aCollaborativeElement">
+      <details key="start" value="1696"/>
+      <details key="end" value="1717"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateAppModule/%/%.1/aCollaborativeElement">
+      <details key="start" value="1213"/>
+      <details key="end" value="1256"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateAppModule/%/%.1/%.3">
+      <details key="start" value="1259"/>
+      <details key="end" value="1320"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateAppModule/%/%.1/%.3/%">
+      <details key="start" value="1259"/>
+      <details key="end" value="1290"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateAppModule/%/%.1/%.3/%/aCollaborativeModel">
+      <details key="start" value="1259"/>
+      <details key="end" value="1278"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateAppModule/%/%.1/%.3/%.1">
+      <details key="start" value="1299"/>
+      <details key="end" value="1319"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateAppModule/%/%.2">
+      <details key="start" value="1883"/>
+      <details key="end" value="2357"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateAppModule/%/%.2/%">
+      <details key="start" value="1997"/>
+      <details key="end" value="2350"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateAppModule/%/%.2/%/%">
+      <details key="start" value="2096"/>
+      <details key="end" value="2343"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateAppModule/%/%.2/%/%/%">
+      <details key="start" value="2227"/>
+      <details key="end" value="2334"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateAppModule/%/%.2/%/%/%/%">
+      <details key="start" value="2245"/>
+      <details key="end" value="2304"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateAppModule/%/%.2/%/%/%/%/%">
+      <details key="start" value="2245"/>
+      <details key="end" value="2274"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateAppModule/%/%.2/%/%/%/%/%/%">
+      <details key="start" value="2245"/>
+      <details key="end" value="2251"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateAppModule/%/%.2/%/%/%/%/%/%.1">
+      <details key="start" value="2254"/>
+      <details key="end" value="2274"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateAppModule/%/%.2/%/%/%/%/%/%.1/workspaceBelong">
+      <details key="start" value="2254"/>
+      <details key="end" value="2269"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateAppModule/%/%.2/%/%/%/%/%.1">
+      <details key="start" value="2277"/>
+      <details key="end" value="2304"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateAppModule/%/%.2/%/%/%/%/%.1/aCollaborativeActivity">
+      <details key="start" value="2277"/>
+      <details key="end" value="2299"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateAppModule/%/%.2/%/%/%/%.1">
+      <details key="start" value="2306"/>
+      <details key="end" value="2333"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateAppModule/%/%.2/%/%/%.1">
+      <details key="start" value="2336"/>
+      <details key="end" value="2337"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity">
+      <details key="start" value="2101"/>
+      <details key="end" value="2224"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%">
+      <details key="start" value="2150"/>
+      <details key="end" value="2225"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%">
+      <details key="start" value="2150"/>
+      <details key="end" value="2216"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/collect">
+      <details key="start" value="2150"/>
+      <details key="end" value="2185"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/collect/%">
+      <details key="start" value="2150"/>
+      <details key="end" value="2180"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/collect/%/aBelongsRelationship">
+      <details key="start" value="2150"/>
+      <details key="end" value="2170"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/collect/%.1">
+      <details key="start" value="2181"/>
+      <details key="end" value="2185"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/collect/temp3">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateAppModule/%/%.2/%/%/aCollaborativeActivity/%/%/%">
+      <details key="start" value="2194"/>
+      <details key="end" value="2215"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateAppModule/%/%.2/%/workspaceBelong">
+      <details key="start" value="2002"/>
+      <details key="end" value="2094"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%">
+      <details key="start" value="2032"/>
+      <details key="end" value="2095"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%">
+      <details key="start" value="2032"/>
+      <details key="end" value="2086"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/collect">
+      <details key="start" value="2032"/>
+      <details key="end" value="2067"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/collect/%">
+      <details key="start" value="2032"/>
+      <details key="end" value="2062"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/collect/%/aBelongsRelationship">
+      <details key="start" value="2032"/>
+      <details key="end" value="2052"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/collect/%.1">
+      <details key="start" value="2063"/>
+      <details key="end" value="2067"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/collect/temp4">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateAppModule/%/%.2/%/workspaceBelong/%/%/%">
+      <details key="start" value="2076"/>
+      <details key="end" value="2085"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateAppModule/%/%.2/aBelongsRelationship">
+      <details key="start" value="1889"/>
+      <details key="end" value="1931"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateAppModule/%/%.2/%.1">
+      <details key="start" value="1934"/>
+      <details key="end" value="1994"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateAppModule/%/%.2/%.1/%">
+      <details key="start" value="1934"/>
+      <details key="end" value="1965"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateAppModule/%/%.2/%.1/%/aCollaborativeModel">
+      <details key="start" value="1934"/>
+      <details key="end" value="1953"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateAppModule/%/%.2/%.1/%.1">
+      <details key="start" value="1974"/>
+      <details key="end" value="1993"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateAppModule/%/%.3">
+      <details key="start" value="2358"/>
+      <details key="end" value="2574"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateAppModule/%/%.3/%">
+      <details key="start" value="2475"/>
+      <details key="end" value="2565"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateAppModule/%/%.3/%/%">
+      <details key="start" value="2493"/>
+      <details key="end" value="2535"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateAppModule/%/%.3/%/%/%">
+      <details key="start" value="2493"/>
+      <details key="end" value="2506"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateAppModule/%/%.3/%/%/%.1">
+      <details key="start" value="2509"/>
+      <details key="end" value="2535"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateAppModule/%/%.3/%/%/%.1/aCollaborativeProcess">
+      <details key="start" value="2509"/>
+      <details key="end" value="2530"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateAppModule/%/%.3/%/%.1">
+      <details key="start" value="2538"/>
+      <details key="end" value="2564"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateAppModule/%/%.3/%.1">
+      <details key="start" value="2567"/>
+      <details key="end" value="2568"/>
+      <details key="line" value="48"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateAppModule/%/%.3/aCollaborativeProcess">
+      <details key="start" value="2364"/>
+      <details key="end" value="2407"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateAppModule/%/%.3/%.2">
+      <details key="start" value="2410"/>
+      <details key="end" value="2471"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateAppModule/%/%.3/%.2/%">
+      <details key="start" value="2410"/>
+      <details key="end" value="2441"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateAppModule/%/%.3/%.2/%/aCollaborativeModel">
+      <details key="start" value="2410"/>
+      <details key="end" value="2429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateAppModule/%/%.3/%.2/%.1">
+      <details key="start" value="2450"/>
+      <details key="end" value="2470"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateAppModule/%/%.4">
+      <details key="start" value="2575"/>
+      <details key="end" value="2707"/>
+      <details key="line" value="49"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateAppModule/%/%.4/%">
+      <details key="start" value="2635"/>
+      <details key="end" value="2698"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateAppModule/%/%.4/%/%">
+      <details key="start" value="2653"/>
+      <details key="end" value="2683"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateAppModule/%/%.4/%/%/%">
+      <details key="start" value="2653"/>
+      <details key="end" value="2669"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateAppModule/%/%.4/%/%/%/anAwareness">
+      <details key="start" value="2653"/>
+      <details key="end" value="2664"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateAppModule/%/%.4/%/%/%.1">
+      <details key="start" value="2672"/>
+      <details key="end" value="2683"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateAppModule/%/%.4/%/%.1">
+      <details key="start" value="2686"/>
+      <details key="end" value="2697"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateAppModule/%/%.4/%.1">
+      <details key="start" value="2700"/>
+      <details key="end" value="2701"/>
+      <details key="line" value="51"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateAppModule/%/%.4/anAwareness">
+      <details key="start" value="2581"/>
+      <details key="end" value="2604"/>
+      <details key="line" value="49"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateAppModule/%/%.4/%.2">
+      <details key="start" value="2607"/>
+      <details key="end" value="2631"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateAppModule/%/%.4/%.2/%">
+      <details key="start" value="2607"/>
+      <details key="end" value="2616"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateAppModule/%/%.5">
+      <details key="start" value="2708"/>
+      <details key="end" value="2737"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateAppModule/%/%.6">
+      <details key="start" value="2739"/>
+      <details key="end" value="2742"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateAppModule/%/%.7">
+      <details key="start" value="2745"/>
+      <details key="end" value="2801"/>
+      <details key="line" value="55"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateAppModule/%/%.8">
+      <details key="start" value="2802"/>
+      <details key="end" value="3530"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateAppModule/%/%.8/%">
+      <details key="start" value="2920"/>
+      <details key="end" value="3170"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateAppModule/%/%.8/%/%">
+      <details key="start" value="2973"/>
+      <details key="end" value="2975"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generateAppModule/%/%.8/%/%.1">
+      <details key="start" value="2976"/>
+      <details key="end" value="3020"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generateAppModule/%/%.8/%/%.1/%">
+      <details key="start" value="2993"/>
+      <details key="end" value="3019"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generateAppModule/%/%.8/%/%.1/%/aCollaborativeElement">
+      <details key="start" value="2993"/>
+      <details key="end" value="3014"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generateAppModule/%/%.8/%/%.2">
+      <details key="start" value="3022"/>
+      <details key="end" value="3024"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/generateAppModule/%/%.8/%/%.3">
+      <details key="start" value="3026"/>
+      <details key="end" value="3161"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/generateAppModule/%/%.8/%/%.3/%">
+      <details key="start" value="3105"/>
+      <details key="end" value="3107"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/generateAppModule/%/%.8/%/%.3/%.1">
+      <details key="start" value="3108"/>
+      <details key="end" value="3149"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/generateAppModule/%/%.8/%/%.3/%.1/%">
+      <details key="start" value="3125"/>
+      <details key="end" value="3148"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/generateAppModule/%/%.8/%/%.3/%.1/%/operationWorkspace">
+      <details key="start" value="3125"/>
+      <details key="end" value="3143"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/generateAppModule/%/%.8/%/%.3/%.2">
+      <details key="start" value="3151"/>
+      <details key="end" value="3153"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/generateAppModule/%/%.8/%/%.3/operationWorkspace">
+      <details key="start" value="3032"/>
+      <details key="end" value="3062"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/generateAppModule/%/%.8/%/%.3/collect">
+      <details key="start" value="3065"/>
+      <details key="end" value="3102"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/generateAppModule/%/%.8/%/%.3/collect/%">
+      <details key="start" value="3065"/>
+      <details key="end" value="3092"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/generateAppModule/%/%.8/%/%.3/collect/%/aWorkspace">
+      <details key="start" value="3065"/>
+      <details key="end" value="3075"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/generateAppModule/%/%.8/%/%.3/collect/%.1">
+      <details key="start" value="3093"/>
+      <details key="end" value="3102"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/generateAppModule/%/%.8/%/%.3/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/generateAppModule/%/%.8/%/%.3/collect/temp5">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/generateAppModule/%/%.8/%/aWorkspace">
+      <details key="start" value="2925"/>
+      <details key="end" value="2971"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/generateAppModule/%/%.8/%/aWorkspace/aCollaborativeElement">
+      <details key="start" value="2951"/>
+      <details key="end" value="2972"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/generateAppModule/%/%.8/%.1">
+      <details key="start" value="3173"/>
+      <details key="end" value="3310"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/generateAppModule/%/%.8/%.1/%">
+      <details key="start" value="3250"/>
+      <details key="end" value="3252"/>
+      <details key="line" value="66"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/generateAppModule/%/%.8/%.1/%.1">
+      <details key="start" value="3253"/>
+      <details key="end" value="3298"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/generateAppModule/%/%.8/%.1/%.1/%">
+      <details key="start" value="3270"/>
+      <details key="end" value="3297"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/generateAppModule/%/%.8/%.1/%.1/%/aCollaborativeActivity">
+      <details key="start" value="3270"/>
+      <details key="end" value="3292"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/generateAppModule/%/%.8/%.1/%.2">
+      <details key="start" value="3300"/>
+      <details key="end" value="3302"/>
+      <details key="line" value="66"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/generateAppModule/%/%.8/%.1/aCollaborativeActivity">
+      <details key="start" value="3178"/>
+      <details key="end" value="3248"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/generateAppModule/%/%.8/%.1/aCollaborativeActivity/aCollaborativeElement">
+      <details key="start" value="3228"/>
+      <details key="end" value="3249"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/generateAppModule/%/%.8/%.2">
+      <details key="start" value="3313"/>
+      <details key="end" value="3522"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/generateAppModule/%/%.8/%.2/%">
+      <details key="start" value="3356"/>
+      <details key="end" value="3358"/>
+      <details key="line" value="69"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/generateAppModule/%/%.8/%.2/%.1">
+      <details key="start" value="3359"/>
+      <details key="end" value="3387"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/generateAppModule/%/%.8/%.2/%.1/%">
+      <details key="start" value="3376"/>
+      <details key="end" value="3386"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/generateAppModule/%/%.8/%.2/%.1/%/aTool">
+      <details key="start" value="3376"/>
+      <details key="end" value="3381"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/generateAppModule/%/%.8/%.2/%.2">
+      <details key="start" value="3389"/>
+      <details key="end" value="3391"/>
+      <details key="line" value="69"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/generateAppModule/%/%.8/%.2/%.3">
+      <details key="start" value="3393"/>
+      <details key="end" value="3513"/>
+      <details key="line" value="70"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/generateAppModule/%/%.8/%.2/%.3/%">
+      <details key="start" value="3462"/>
+      <details key="end" value="3464"/>
+      <details key="line" value="71"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/generateAppModule/%/%.8/%.2/%.3/%.1">
+      <details key="start" value="3465"/>
+      <details key="end" value="3501"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/generateAppModule/%/%.8/%.2/%.3/%.1/%">
+      <details key="start" value="3482"/>
+      <details key="end" value="3500"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/generateAppModule/%/%.8/%.2/%.3/%.1/%/operationTool">
+      <details key="start" value="3482"/>
+      <details key="end" value="3495"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/generateAppModule/%/%.8/%.2/%.3/%.2">
+      <details key="start" value="3503"/>
+      <details key="end" value="3505"/>
+      <details key="line" value="71"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/generateAppModule/%/%.8/%.2/%.3/operationTool">
+      <details key="start" value="3399"/>
+      <details key="end" value="3424"/>
+      <details key="line" value="70"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/generateAppModule/%/%.8/%.2/%.3/collect">
+      <details key="start" value="3427"/>
+      <details key="end" value="3459"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/generateAppModule/%/%.8/%.2/%.3/collect/%">
+      <details key="start" value="3427"/>
+      <details key="end" value="3449"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/generateAppModule/%/%.8/%.2/%.3/collect/%/aTool">
+      <details key="start" value="3427"/>
+      <details key="end" value="3432"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/generateAppModule/%/%.8/%.2/%.3/collect/%.1">
+      <details key="start" value="3450"/>
+      <details key="end" value="3459"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/generateAppModule/%/%.8/%.2/%.3/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/generateAppModule/%/%.8/%.2/%.3/collect/temp6">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/generateAppModule/%/%.8/%.2/aTool">
+      <details key="start" value="3318"/>
+      <details key="end" value="3354"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/generateAppModule/%/%.8/%.2/aTool/aCollaborativeElement">
+      <details key="start" value="3334"/>
+      <details key="end" value="3355"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/generateAppModule/%/%.8/aCollaborativeElement">
+      <details key="start" value="2808"/>
+      <details key="end" value="2851"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/generateAppModule/%/%.8/%.3">
+      <details key="start" value="2854"/>
+      <details key="end" value="2915"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/generateAppModule/%/%.8/%.3/%">
+      <details key="start" value="2854"/>
+      <details key="end" value="2885"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.172" references="/0/generateAppModule/%/%.8/%.3/%/aCollaborativeModel">
+      <details key="start" value="2854"/>
+      <details key="end" value="2873"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.173" references="/0/generateAppModule/%/%.8/%.3/%.1">
+      <details key="start" value="2894"/>
+      <details key="end" value="2914"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.174" references="/0/generateAppModule/%/%.9">
+      <details key="start" value="3532"/>
+      <details key="end" value="3988"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.175" references="/0/generateAppModule/%/%.9/%">
+      <details key="start" value="3648"/>
+      <details key="end" value="3980"/>
+      <details key="line" value="76"/>
+    </eAnnotations>
+    <eAnnotations source="positions.176" references="/0/generateAppModule/%/%.9/%/%">
+      <details key="start" value="3749"/>
+      <details key="end" value="3971"/>
+      <details key="line" value="77"/>
+    </eAnnotations>
+    <eAnnotations source="positions.177" references="/0/generateAppModule/%/%.9/%/%/%">
+      <details key="start" value="3879"/>
+      <details key="end" value="3881"/>
+      <details key="line" value="78"/>
+    </eAnnotations>
+    <eAnnotations source="positions.178" references="/0/generateAppModule/%/%.9/%/%/%.1">
+      <details key="start" value="3882"/>
+      <details key="end" value="3959"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.179" references="/0/generateAppModule/%/%.9/%/%/%.1/%">
+      <details key="start" value="3899"/>
+      <details key="end" value="3958"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.180" references="/0/generateAppModule/%/%.9/%/%/%.1/%/%">
+      <details key="start" value="3899"/>
+      <details key="end" value="3928"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.181" references="/0/generateAppModule/%/%.9/%/%/%.1/%/%/%">
+      <details key="start" value="3899"/>
+      <details key="end" value="3905"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.182" references="/0/generateAppModule/%/%.9/%/%/%.1/%/%/%.1">
+      <details key="start" value="3908"/>
+      <details key="end" value="3928"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.183" references="/0/generateAppModule/%/%.9/%/%/%.1/%/%/%.1/workspaceBelong">
+      <details key="start" value="3908"/>
+      <details key="end" value="3923"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.184" references="/0/generateAppModule/%/%.9/%/%/%.1/%/%.1">
+      <details key="start" value="3931"/>
+      <details key="end" value="3958"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.185" references="/0/generateAppModule/%/%.9/%/%/%.1/%/%.1/aCollaborativeActivity">
+      <details key="start" value="3931"/>
+      <details key="end" value="3953"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.186" references="/0/generateAppModule/%/%.9/%/%/%.2">
+      <details key="start" value="3961"/>
+      <details key="end" value="3963"/>
+      <details key="line" value="78"/>
+    </eAnnotations>
+    <eAnnotations source="positions.187" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity">
+      <details key="start" value="3754"/>
+      <details key="end" value="3877"/>
+      <details key="line" value="77"/>
+    </eAnnotations>
+    <eAnnotations source="positions.188" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%">
+      <details key="start" value="3803"/>
+      <details key="end" value="3878"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.189" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%">
+      <details key="start" value="3803"/>
+      <details key="end" value="3869"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.190" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/collect">
+      <details key="start" value="3803"/>
+      <details key="end" value="3838"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.191" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/collect/%">
+      <details key="start" value="3803"/>
+      <details key="end" value="3833"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.192" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/collect/%/aBelongsRelationship">
+      <details key="start" value="3803"/>
+      <details key="end" value="3823"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.193" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/collect/%.1">
+      <details key="start" value="3834"/>
+      <details key="end" value="3838"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.194" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.195" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/collect/temp7">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.196" references="/0/generateAppModule/%/%.9/%/%/aCollaborativeActivity/%/%/%">
+      <details key="start" value="3847"/>
+      <details key="end" value="3868"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.197" references="/0/generateAppModule/%/%.9/%/workspaceBelong">
+      <details key="start" value="3653"/>
+      <details key="end" value="3745"/>
+      <details key="line" value="76"/>
+    </eAnnotations>
+    <eAnnotations source="positions.198" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%">
+      <details key="start" value="3683"/>
+      <details key="end" value="3746"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.199" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%">
+      <details key="start" value="3683"/>
+      <details key="end" value="3737"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.200" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/collect">
+      <details key="start" value="3683"/>
+      <details key="end" value="3718"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.201" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/collect/%">
+      <details key="start" value="3683"/>
+      <details key="end" value="3713"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.202" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/collect/%/aBelongsRelationship">
+      <details key="start" value="3683"/>
+      <details key="end" value="3703"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.203" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/collect/%.1">
+      <details key="start" value="3714"/>
+      <details key="end" value="3718"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.204" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.205" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/collect/temp8">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.206" references="/0/generateAppModule/%/%.9/%/workspaceBelong/%/%/%">
+      <details key="start" value="3727"/>
+      <details key="end" value="3736"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.207" references="/0/generateAppModule/%/%.9/aBelongsRelationship">
+      <details key="start" value="3538"/>
+      <details key="end" value="3580"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.208" references="/0/generateAppModule/%/%.9/%.1">
+      <details key="start" value="3583"/>
+      <details key="end" value="3643"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.209" references="/0/generateAppModule/%/%.9/%.1/%">
+      <details key="start" value="3583"/>
+      <details key="end" value="3614"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.210" references="/0/generateAppModule/%/%.9/%.1/%/aCollaborativeModel">
+      <details key="start" value="3583"/>
+      <details key="end" value="3602"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.211" references="/0/generateAppModule/%/%.9/%.1/%.1">
+      <details key="start" value="3623"/>
+      <details key="end" value="3642"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.212" references="/0/generateAppModule/%/%.10">
+      <details key="start" value="3990"/>
+      <details key="end" value="4180"/>
+      <details key="line" value="82"/>
+    </eAnnotations>
+    <eAnnotations source="positions.213" references="/0/generateAppModule/%/%.10/%">
+      <details key="start" value="4106"/>
+      <details key="end" value="4108"/>
+      <details key="line" value="83"/>
+    </eAnnotations>
+    <eAnnotations source="positions.214" references="/0/generateAppModule/%/%.10/%.1">
+      <details key="start" value="4109"/>
+      <details key="end" value="4169"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.215" references="/0/generateAppModule/%/%.10/%.1/%">
+      <details key="start" value="4126"/>
+      <details key="end" value="4168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.216" references="/0/generateAppModule/%/%.10/%.1/%/%">
+      <details key="start" value="4126"/>
+      <details key="end" value="4139"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.217" references="/0/generateAppModule/%/%.10/%.1/%/%.1">
+      <details key="start" value="4142"/>
+      <details key="end" value="4168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.218" references="/0/generateAppModule/%/%.10/%.1/%/%.1/aCollaborativeProcess">
+      <details key="start" value="4142"/>
+      <details key="end" value="4163"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.219" references="/0/generateAppModule/%/%.10/%.2">
+      <details key="start" value="4171"/>
+      <details key="end" value="4173"/>
+      <details key="line" value="83"/>
+    </eAnnotations>
+    <eAnnotations source="positions.220" references="/0/generateAppModule/%/%.10/aCollaborativeProcess">
+      <details key="start" value="3996"/>
+      <details key="end" value="4039"/>
+      <details key="line" value="82"/>
+    </eAnnotations>
+    <eAnnotations source="positions.221" references="/0/generateAppModule/%/%.10/%.3">
+      <details key="start" value="4042"/>
+      <details key="end" value="4103"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.222" references="/0/generateAppModule/%/%.10/%.3/%">
+      <details key="start" value="4042"/>
+      <details key="end" value="4073"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.223" references="/0/generateAppModule/%/%.10/%.3/%/aCollaborativeModel">
+      <details key="start" value="4042"/>
+      <details key="end" value="4061"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.224" references="/0/generateAppModule/%/%.10/%.3/%.1">
+      <details key="start" value="4082"/>
+      <details key="end" value="4102"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.225" references="/0/generateAppModule/%/%.11">
+      <details key="start" value="4182"/>
+      <details key="end" value="4303"/>
+      <details key="line" value="85"/>
+    </eAnnotations>
+    <eAnnotations source="positions.226" references="/0/generateAppModule/%/%.11/%">
+      <details key="start" value="4241"/>
+      <details key="end" value="4243"/>
+      <details key="line" value="86"/>
+    </eAnnotations>
+    <eAnnotations source="positions.227" references="/0/generateAppModule/%/%.11/%.1">
+      <details key="start" value="4244"/>
+      <details key="end" value="4292"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.228" references="/0/generateAppModule/%/%.11/%.1/%">
+      <details key="start" value="4261"/>
+      <details key="end" value="4291"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.229" references="/0/generateAppModule/%/%.11/%.1/%/%">
+      <details key="start" value="4261"/>
+      <details key="end" value="4277"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.230" references="/0/generateAppModule/%/%.11/%.1/%/%/anAwareness">
+      <details key="start" value="4261"/>
+      <details key="end" value="4272"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.231" references="/0/generateAppModule/%/%.11/%.1/%/%.1">
+      <details key="start" value="4280"/>
+      <details key="end" value="4291"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.232" references="/0/generateAppModule/%/%.11/%.2">
+      <details key="start" value="4294"/>
+      <details key="end" value="4296"/>
+      <details key="line" value="86"/>
+    </eAnnotations>
+    <eAnnotations source="positions.233" references="/0/generateAppModule/%/%.11/anAwareness">
+      <details key="start" value="4188"/>
+      <details key="end" value="4211"/>
+      <details key="line" value="85"/>
+    </eAnnotations>
+    <eAnnotations source="positions.234" references="/0/generateAppModule/%/%.11/%.3">
+      <details key="start" value="4214"/>
+      <details key="end" value="4238"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.235" references="/0/generateAppModule/%/%.11/%.3/%">
+      <details key="start" value="4214"/>
+      <details key="end" value="4223"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.236" references="/0/generateAppModule/%/%.12">
+      <details key="start" value="4304"/>
+      <details key="end" value="4305"/>
+      <details key="line" value="88"/>
+    </eAnnotations>
+    <eAnnotations source="positions.237" references="/0/generateAppModule/%/%.13">
+      <details key="start" value="4307"/>
+      <details key="end" value="4310"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.238" references="/0/generateAppModule/%/%.14">
+      <details key="start" value="4313"/>
+      <details key="end" value="4325"/>
+      <details key="line" value="88"/>
+    </eAnnotations>
+    <eAnnotations source="positions.239" references="/0/generateAppModule/%/%.15">
+      <details key="start" value="4327"/>
+      <details key="end" value="4330"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.240" references="/0/generateAppModule/%/%.16">
+      <details key="start" value="4333"/>
+      <details key="end" value="4441"/>
+      <details key="line" value="90"/>
+    </eAnnotations>
+    <eAnnotations source="positions.241" references="/0/generateAppModule/%/%.17">
+      <details key="start" value="4443"/>
+      <details key="end" value="4446"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.242" references="/0/generateAppModule/%/%.18">
+      <details key="start" value="4449"/>
+      <details key="end" value="4463"/>
+      <details key="line" value="96"/>
+    </eAnnotations>
+    <eAnnotations source="positions.243" references="/0/generateAppModule/%/%.19">
+      <details key="start" value="4465"/>
+      <details key="end" value="4468"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.244" references="/0/generateAppModule/%/%.20">
+      <details key="start" value="4471"/>
+      <details key="end" value="4559"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.245" references="/0/generateAppModule/%/%.21">
+      <details key="start" value="4561"/>
+      <details key="end" value="4564"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.246" references="/0/generateAppModule/%/%.22">
+      <details key="start" value="4567"/>
+      <details key="end" value="4581"/>
+      <details key="line" value="102"/>
+    </eAnnotations>
+    <eAnnotations source="positions.247" references="/0/generateAppModule/%/%.23">
+      <details key="start" value="4583"/>
+      <details key="end" value="4586"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.248" references="/0/generateAppModule/%/%.24">
+      <details key="start" value="4589"/>
+      <details key="end" value="4607"/>
+      <details key="line" value="104"/>
+    </eAnnotations>
+    <eAnnotations source="positions.249" references="/0/generateAppModule/%/%.25">
+      <details key="start" value="4609"/>
+      <details key="end" value="4612"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.250" references="/0/generateAppModule/%/%.26">
+      <details key="start" value="4615"/>
+      <details key="end" value="4646"/>
+      <details key="line" value="106"/>
+    </eAnnotations>
+    <eAnnotations source="positions.251" references="/0/generateAppModule/%/%.27">
+      <details key="start" value="398"/>
+      <details key="end" value="421"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.252" references="/0/generateAppModule/%/%.28">
+      <details key="start" value="430"/>
+      <details key="end" value="437"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.253" references="/0/generateAppModule/aCollaborativeModel">
+      <details key="start" value="348"/>
+      <details key="end" value="388"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

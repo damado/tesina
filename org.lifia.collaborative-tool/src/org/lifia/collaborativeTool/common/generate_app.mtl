@@ -1,0 +1,27 @@
+[comment encoding = UTF-8 /]
+[module generate_app('http://cm/1.0')]
+[import org::lifia::collaborativeTool::common::generate_app_component/]
+[import org::lifia::collaborativeTool::common::generate_app_view/]
+[import org::lifia::collaborativeTool::common::generate_app_css/]
+[import org::lifia::collaborativeTool::common::generate_app_module/]
+[import org::lifia::collaborativeTool::files::generate_routes_app /]
+[import org::lifia::collaborativeTool::files::generate_registry /]
+[import org::lifia::collaborativeTool::files::generate_login /]
+
+[template public generateApp(aCollaborativeModel : CollaborativeModel)]
+
+[generateAppComponent(aCollaborativeModel)/]
+
+[generateAppView(aCollaborativeModel)/]
+
+[generateAppCss(aCollaborativeModel)/]
+
+[generateAppModule(aCollaborativeModel)/]
+
+[generateRoutesApp(aCollaborativeModel)/]
+
+[generateRegistry(aCollaborativeModel)/]
+
+[generateLogin(aCollaborativeModel)/]
+
+[/template]

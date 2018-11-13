@@ -1,0 +1,14 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_menu_collaborative_activity.
+ */]
+[module generate_menu_collaborative_activity_view('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_router_link /]
+
+[template public generateMenuCollaborativeActivityView(aCollaborativeModel : CollaborativeModel, aCollaborativeActivityName : String, aWorkspaceName : String)]
+
+[file ('src/app/components/menucollaborativeactivity/menu' + replaceSpaceByDash(aWorkspaceName.toLower()) + replaceSpaceByDash(aCollaborativeActivityName.toLower()) + '/menu' + replaceSpaceByDash(aWorkspaceName.toLower()) + replaceSpaceByDash(aCollaborativeActivityName.toLower()) +'.component.html', false, 'UTF-8')]
+<div class="square" [generateRouterLink(aWorkspaceName, aCollaborativeActivityName)/] >[aCollaborativeActivityName/]</div>
+[/file]
+[/template]

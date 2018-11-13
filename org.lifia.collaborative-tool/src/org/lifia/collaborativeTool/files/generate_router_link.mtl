@@ -1,0 +1,16 @@
+[comment encoding = UTF-8 /]
+[module generate_router_link('http://cm/1.0')]
+
+[**
+ * Retorna la referencia de un router link dependiendo de los valores ingresados, se asume que el primero es el padre.
+ * @param String
+ * @param String
+ */]
+[template public generateRouterLink(parent : String, child: String) post (trim())]
+[if (child.oclIsUndefined())]
+[ '[' /]routerLink[ ']' /]="[ '[' /]'/[parent.toLowerCase()/]'[ ']' /]"
+[/if]
+[if (child.oclIsUndefined()._not())]
+[ '[' /]routerLink[ ']' /]="[ '[' /]'/[parent.toLowerCase()/]/[child.toLowerCase()/]'[ ']' /]"
+[/if]
+[/template]

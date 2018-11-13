@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_login" nsURI="org::lifia::collaborativeTool::files::generate_login" startHeaderPosition="29" endHeaderPosition="136">
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <imports href="generate_login_view.emtl#/0"/>
+    <imports href="generate_login_style.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateLogin" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import { Component, TemplateRef, OnInit } from '@angular/core';&#xA;import { BsModalService } from 'ngx-bootstrap/modal';&#xA;import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';&#xA;import { FormGroup, FormControl, Validators } from '@angular/forms';&#xA;import { AuthenticationService } from '../../services/authentication.service';&#xA;import { User } from './../../class/user';&#xA;&#xA;@Component({&#xA;  selector: 'app-login',&#xA;  templateUrl: './login.component.html',&#xA;  styleUrls: "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="'./login.component.css'"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;})&#xA;&#xA;export class LoginComponent implements OnInit {&#xA;&#xA;&#x9;public modalRef: BsModalRef;&#xA;&#x9;public formLogin: FormGroup;&#xA;&#x9;public userLogged: User = null;&#xA;&#x9;public error: boolean = false;&#xA;&#xA;&#x9;constructor(private modalService: BsModalService, private autenticationService: AuthenticationService) {}&#xA;&#xA;&#x9;ngOnInit() {&#xA;&#x9;&#x9;this.formLogin = new FormGroup({&#xA;&#x9;&#x9;&#x9;username: new FormControl('', "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Validators.required"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="),&#xA;&#x9;&#x9;&#x9;password: new FormControl('', "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Validators.required"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")&#xA;&#x9;&#x9;});&#xA;&#x9;&#x9;this.userLogged = this.autenticationService.getUserLogged();&#xA;&#x9;}&#xA;&#xA;&#x9;/** Abre el modal para el login. **/&#xA;&#x9;public openModal(template: TemplateRef&lt;any>) {&#xA;&#x9;&#x9;this.modalRef = this.modalService.show(template, {class: 'modal-sm'});&#xA;&#x9;}&#xA;&#xA;&#x9;/** Metodo llamado cuando se confirma los datos del login. **/&#xA;&#x9;public confirm(): void {&#xA;&#x9;&#x9;this.autenticationService.login(this.formLogin.value).subscribe((user) => {&#xA;&#x9;&#x9;&#x9;if (user) {&#xA;&#x9;&#x9;&#x9;&#x9;this.userLogged = user;&#xA;&#x9;&#x9;&#x9;&#x9;this.modalRef.hide();&#xA;&#x9;&#x9;&#x9;&#x9;return;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;this.error = true;&#xA;&#x9;&#x9;&#x9;return;&#xA;&#x9;&#x9;});&#xA;&#x9;}&#xA;&#xA;&#x9;/** Metodo llamado cuando se cancela el login. **/&#xA;&#x9;public decline(): void {&#xA;&#x9;&#x9;this.error = false;&#xA;&#x9;&#x9;this.modalRef.hide();&#xA;&#x9;}&#xA;&#xA;&#x9;/** Metodo llamado cuando se desloguea un usuario&#x9;**/&#xA;&#x9;public logout() {&#xA;&#x9;&#x9;this.userLogged = null;&#xA;&#x9;}&#xA;&#xA;}&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/app/components/login/login.component.ts">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="generate_login_view.emtl#/0/generateLoginView"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateLogin/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="generate_login_style.emtl#/0/generateLoginStyle"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateLogin/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateLogin">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateLogin"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateLoginView">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_login_view.emtl#/0/generateLoginView"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateLoginStyle">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_login_style.emtl#/0/generateLoginStyle"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateLogin">
+      <details key="start" value="211"/>
+      <details key="end" value="2222"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateLogin/%">
+      <details key="start" value="285"/>
+      <details key="end" value="286"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateLogin/%.1">
+      <details key="start" value="286"/>
+      <details key="end" value="2122"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateLogin/%.1/%">
+      <details key="start" value="357"/>
+      <details key="end" value="830"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateLogin/%.1/%.1">
+      <details key="start" value="832"/>
+      <details key="end" value="835"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateLogin/%.1/%.2">
+      <details key="start" value="838"/>
+      <details key="end" value="861"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateLogin/%.1/%.3">
+      <details key="start" value="863"/>
+      <details key="end" value="866"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateLogin/%.1/%.4">
+      <details key="start" value="869"/>
+      <details key="end" value="1239"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateLogin/%.1/%.5">
+      <details key="start" value="1241"/>
+      <details key="end" value="1244"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateLogin/%.1/%.6">
+      <details key="start" value="1247"/>
+      <details key="end" value="1266"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateLogin/%.1/%.7">
+      <details key="start" value="1268"/>
+      <details key="end" value="1271"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateLogin/%.1/%.8">
+      <details key="start" value="1274"/>
+      <details key="end" value="1310"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateLogin/%.1/%.9">
+      <details key="start" value="1312"/>
+      <details key="end" value="1315"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateLogin/%.1/%.10">
+      <details key="start" value="1318"/>
+      <details key="end" value="1337"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateLogin/%.1/%.11">
+      <details key="start" value="1339"/>
+      <details key="end" value="1342"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateLogin/%.1/%.12">
+      <details key="start" value="1345"/>
+      <details key="end" value="2115"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateLogin/%.1/%.13">
+      <details key="start" value="293"/>
+      <details key="end" value="338"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateLogin/%.1/%.14">
+      <details key="start" value="347"/>
+      <details key="end" value="354"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateLogin/%.2">
+      <details key="start" value="2123"/>
+      <details key="end" value="2124"/>
+      <details key="line" value="72"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateLogin/%.3">
+      <details key="start" value="2125"/>
+      <details key="end" value="2163"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateLogin/%.3/aCollaborativeModel">
+      <details key="start" value="2143"/>
+      <details key="end" value="2162"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateLogin/%.4">
+      <details key="start" value="2165"/>
+      <details key="end" value="2167"/>
+      <details key="line" value="74"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateLogin/%.5">
+      <details key="start" value="2168"/>
+      <details key="end" value="2207"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateLogin/%.5/aCollaborativeModel">
+      <details key="start" value="2187"/>
+      <details key="end" value="2206"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateLogin/%.6">
+      <details key="start" value="2209"/>
+      <details key="end" value="2210"/>
+      <details key="line" value="76"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateLogin/aCollaborativeModel">
+      <details key="start" value="242"/>
+      <details key="end" value="282"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

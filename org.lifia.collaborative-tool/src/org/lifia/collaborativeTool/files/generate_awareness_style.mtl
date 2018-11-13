@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_awareness_style.
+ */]
+[module generate_awareness_style('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[template public generateAwarenessStyle(anAwareness : Awareness)]
+
+[file ('src/app/components/awareness/' + replaceSpaceByDash(anAwareness.name.toLower()) + 'awareness' + '/' + replaceSpaceByDash(anAwareness.name.toLower()) + 'awareness' + '.component.css', false, 'UTF-8')]
+
+[/file]
+[/template]

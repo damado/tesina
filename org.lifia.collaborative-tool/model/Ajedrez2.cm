@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:CollaborativeModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://cm/1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="Ajedrez">
+  <packagedElement xsi:type="cm:Workspace" name="Mesa">
+    <elementOperation>
+      <operation name="crearPartida"/>
+    </elementOperation>
+    <elementOperation>
+      <operation name="verPartida"/>
+    </elementOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="JugarPartidas" myRoles="//Negras //Blancas">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region>
+        <subvertex xsi:type="uml:Pseudostate"/>
+        <subvertex xsi:type="uml:FinalState"/>
+        <subvertex xsi:type="uml:Pseudostate" kind="choice"/>
+      </region>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="VerTableros" myRoles="//Jugador //Espectador">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.3/@ownedEnd.0 //@packagedElement.3/@ownedEnd.1">
+    <ownedEnd type="//JugarPartidas" association="//@packagedElement.3"/>
+    <ownedEnd type="//Mesa" association="//@packagedElement.3"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.4/@ownedEnd.0 //@packagedElement.4/@ownedEnd.1">
+    <ownedEnd type="//VerTableros" association="//@packagedElement.4"/>
+    <ownedEnd type="//Mesa" association="//@packagedElement.4"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Jugador">
+    <assignedRoleElementOperation elementOperation="//Mesa/Mesa-%3EcrearPartida">
+      <callEvent operation="//Mesa/Mesa-%3EcrearPartida/crearPartida"/>
+    </assignedRoleElementOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Blancas">
+    <assignedRoleElementOperation elementOperation="//Chat/Chat-%3EenviarMensaje">
+      <callEvent operation="//Chat/Chat-%3EenviarMensaje/enviarMensaje"/>
+    </assignedRoleElementOperation>
+    <assignedRoleElementOperation elementOperation="//Tablero/Tablero-%3EmoverFicha">
+      <callEvent operation="//Tablero/Tablero-%3EmoverFicha/moverFicha"/>
+    </assignedRoleElementOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Negras">
+    <assignedRoleElementOperation elementOperation="//Tablero/Tablero-%3EmoverFicha">
+      <callEvent name="moverFicha" operation="//Tablero/Tablero-%3EmoverFicha/moverFicha"/>
+    </assignedRoleElementOperation>
+    <assignedRoleElementOperation elementOperation="//Chat/Chat-%3EenviarMensaje">
+      <callEvent operation="//Chat/Chat-%3EenviarMensaje/enviarMensaje"/>
+    </assignedRoleElementOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Espectador">
+    <assignedRoleElementOperation elementOperation="//Mesa/Mesa-%3EverPartida">
+      <callEvent operation="//Mesa/Mesa-%3EverPartida/verPartida"/>
+    </assignedRoleElementOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="VisorPartidas"/>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.10/@ownedEnd.0 //@packagedElement.10/@ownedEnd.1">
+    <ownedEnd type="//VerTableros" association="//@packagedElement.10"/>
+    <ownedEnd type="//VisorPartidas" association="//@packagedElement.10"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="Tablero">
+    <elementOperation>
+      <operation name="moverFicha"/>
+    </elementOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="Chat">
+    <elementOperation>
+      <operation name="enviarMensaje"/>
+    </elementOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.13/@ownedEnd.0 //@packagedElement.13/@ownedEnd.1">
+    <ownedEnd type="//JugarPartidas" association="//@packagedElement.13"/>
+    <ownedEnd type="//Tablero" association="//@packagedElement.13"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.14/@ownedEnd.0 //@packagedElement.14/@ownedEnd.1">
+    <ownedEnd type="//JugarPartidas" association="//@packagedElement.14"/>
+    <ownedEnd type="//Chat" association="//@packagedElement.14"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:AwarenessKind" name="movida"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="presencia"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="alarma"/>
+  <packagedElement xsi:type="cm:CollaborativeProcess" name="Campeonato">
+    <ownedBehavior xsi:type="uml:Activity">
+      <edge xsi:type="cm:CollaborativeProcessEdge" target="//Campeonato/@ownedBehavior.0/JugarPartidas" source="//Campeonato/@ownedBehavior.0/@ownedNode.0" roleElementOperation="//Jugador/(Jugador)Mesa-%3EcrearPartida"/>
+      <edge xsi:type="cm:CollaborativeProcessEdge" target="//Campeonato/@ownedBehavior.0/VerTableros" source="//Campeonato/@ownedBehavior.0/JugarPartidas" roleElementOperation="//Negras/(Negras)Tablero-%3EmoverFicha"/>
+      <edge xsi:type="cm:CollaborativeProcessEdge" target="//Campeonato/@ownedBehavior.0/@ownedNode.3" roleElementOperation="//Blancas/(Blancas)Tablero-%3EmoverFicha"/>
+      <ownedNode xsi:type="uml:InitialNode" outgoing="//Campeonato/@ownedBehavior.0/@edge.0"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="VerTableros" incoming="//Campeonato/@ownedBehavior.0/@edge.1" collaborativeActivity="//VerTableros">
+        <activityKind/>
+      </ownedNode>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="JugarPartidas" incoming="//Campeonato/@ownedBehavior.0/@edge.0" outgoing="//Campeonato/@ownedBehavior.0/@edge.1" collaborativeActivity="//JugarPartidas">
+        <activityKind/>
+      </ownedNode>
+      <ownedNode xsi:type="uml:ActivityFinalNode" incoming="//Campeonato/@ownedBehavior.0/@edge.2"/>
+      <structuredNode/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Awareness" name="ultimaMovida" source="//Negras/(Negras)Tablero-%3EmoverFicha/moverFicha" shownIn="//Tablero"/>
+</cm:CollaborativeModel>

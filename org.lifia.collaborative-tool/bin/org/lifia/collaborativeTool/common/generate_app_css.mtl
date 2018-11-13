@@ -1,0 +1,40 @@
+[comment encoding = UTF-8 /]
+[module generate_app_css('http://cm/1.0')]
+
+
+[template public generateAppCss(aCollaborativeModel : CollaborativeModel)]
+[file ('src/app/app.component.css', false, 'UTF-8')]
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px;
+}
+.link-login {
+  float: right !important;
+}
+.desactive {
+	display: none;;
+}
+[/file]
+[/template]

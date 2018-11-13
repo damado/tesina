@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_operation_button_style.
+ */]
+[module generate_operation_button_style('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[template public generateOperationButtonStyle(aCollaborativeModel : CollaborativeModel, aOperationName: String)]
+
+[file ('src/app/components/operations/' + replaceSpaceByDash(aOperationName.toLower()) + '/' + replaceSpaceByDash(aOperationName.toLower()) + '.component.css', false, 'UTF-8')]
+[/file]
+[/template]

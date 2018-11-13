@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module generate_workspace_style('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[template public generateWorkspaceStyle(aWorkspace : Workspace)]
+
+[file ('src/app/components/workspace/' + replaceSpaceByDash(aWorkspace.name.toLower()) + '/'+ replaceSpaceByDash(aWorkspace.name.toLower()) +'.component.css', false, 'UTF-8')]
+
+[/file]
+[/template]

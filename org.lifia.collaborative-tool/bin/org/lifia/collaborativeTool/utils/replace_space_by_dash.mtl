@@ -1,0 +1,4 @@
+[comment encoding = UTF-8 /]
+[module replace_space_by_dash('http://cm/1.0')]
+
+[query public replaceSpaceByDash (aName : String) : String = aName.replaceAll(' ', '-')/]

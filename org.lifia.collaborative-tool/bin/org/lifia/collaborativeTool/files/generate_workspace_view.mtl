@@ -1,0 +1,51 @@
+[comment encoding = UTF-8 /]
+[module generate_workspace_view('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_menu_collaborative_activity /]
+[import org::lifia::collaborativeTool::utils::generate_role_list /]
+[import org::lifia::collaborativeTool::files::generate_operation_button /]
+
+[comment Create the html view for a workspace /]
+
+[template public generateWorkspaceView(aCollaborativeModel : CollaborativeModel, aWorkspace : Workspace)]
+
+[file ('src/app/components/workspace/' + replaceSpaceByDash(aWorkspace.name.toLower()) + '/'+ replaceSpaceByDash(aWorkspace.name.toLower()) +'.component.html', false, 'UTF-8')]
+<div class="row">
+	<div class="col-md-12">
+		<h3>[aWorkspace.name/]</h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		[for (operationWorkspace : Operation | aWorkspace.elementOperation.operation)]
+			[generateOperationButton(aCollaborativeModel, operationWorkspace.name, null)/]
+			<app-[replaceSpaceByDash(operationWorkspace.name.toLower())/]></app-[replaceSpaceByDash(operationWorkspace.name.toLower())/]>
+		[/for]
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+[for (aBelongsRelationship : BelongsRelationship | BelongsRelationship.allInstances())]
+	[for (workspaceBelong: Workspace | aBelongsRelationship.memberEnd.type->filter(Workspace)->select(aWorkBel: Workspace | aWorkBel.name.equalsIgnoreCase(aWorkspace.name)))]
+		[let aCollaborativeActivity: CollaborativeActivity = aBelongsRelationship.memberEnd.type->filter(CollaborativeActivity)->first()]
+			[generateMenuCollaborativeActivity(aCollaborativeModel, aCollaborativeActivity, aWorkspace.name)/]
+			<app-menu-[replaceSpaceByDash(workspaceBelong.name.toLower())/]-[replaceSpaceByDash(aCollaborativeActivity.name.toLower())/]></app-menu-[replaceSpaceByDash(workspaceBelong.name.toLower())/]-[replaceSpaceByDash(aCollaborativeActivity.name.toLower())/]>
+		[/let]
+	[/for]
+[/for]
+[comment]		[generateMenuCollaborativeActivity(aCollaborativeModel, aCollaborativeActivity, aWorkspace.name)/][/comment]
+[comment]		<app-menu-[replaceSpaceByDash(aWorkspace.name.toLower())/]-[replaceSpaceByDash(aCollaborativeActivity.name.toLower())/]></app-menu-[replaceSpaceByDash(aWorkspace.name.toLower())/]-[replaceSpaceByDash(aCollaborativeActivity.name.toLower())/]>[/comment]
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<router-outlet></router-outlet>
+	</div>
+</div>
+[/file]
+[/template]

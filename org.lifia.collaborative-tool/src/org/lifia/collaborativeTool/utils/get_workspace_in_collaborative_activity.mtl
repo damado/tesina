@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module get_workspace_in_collaborative_activity.
+ */]
+[module get_workspace_in_collaborative_activity('http://cm/1.0')]
+
+[query public getWorkspaceInCollaborativeActivity (aCollaborativeActivity : CollaborativeActivity) : Workspace = 
+	cm::BelongsRelationship::allInstances()->select(aBelongsRelationship: BelongsRelationship | aBelongsRelationship.memberEnd.type->filter(CollaborativeActivity)->includes(aCollaborativeActivity)).memberEnd.type->filter(Workspace)->asOrderedSet()->first()
+/]

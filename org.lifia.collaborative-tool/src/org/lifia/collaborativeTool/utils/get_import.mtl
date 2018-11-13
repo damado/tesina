@@ -1,0 +1,6 @@
+[comment encoding = UTF-8 /]
+[module get_import('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::get_component_name/]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[query public getImport (aCollaborativeElement : CollaborativeElement) : String = 'import { ' + getComponentName(aCollaborativeElement.name) + ' } from ' + '\'./components/' + aCollaborativeElement.eClass().name.toLowerCase() + '/' + replaceSpaceByDash(aCollaborativeElement.name.toLower()) + '/' + replaceSpaceByDash(aCollaborativeElement.name.toLower()) + '.component\';' /]

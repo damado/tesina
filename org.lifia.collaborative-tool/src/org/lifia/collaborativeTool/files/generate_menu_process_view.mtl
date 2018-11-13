@@ -1,0 +1,21 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_menu_process_view.
+ */]
+[module generate_menu_process_view('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_router_link /]
+[import org::lifia::collaborativeTool::utils::get_workspace_in_collaborative_activity /]
+
+[template public generateMenuProcessView(aCollaborativeProcess : CollaborativeProcess)]
+
+[file ('src/app/components/menucollaborativeprocess/menuprocess' + replaceSpaceByDash(aCollaborativeProcess.name.toLower()) + '/menuprocess' + replaceSpaceByDash(aCollaborativeProcess.name.toLower()) +'.component.html', false, 'UTF-8')]
+		[for (activity : Activity | aCollaborativeProcess.ownedMember->filter(Activity))]
+			[let aCollaborativeActivity : CollaborativeActivity = activity.ownedNode->filter(InitialNode).outgoing.target.eGet('collaborativeActivity').oclAsType(CollaborativeActivity)->asOrderedSet()->first()]
+				[let aWorkspace : Workspace = getWorkspaceInCollaborativeActivity(aCollaborativeActivity)]
+					<a [generateRouterLink(aWorkspace.name, aCollaborativeActivity.name)/] >[aCollaborativeProcess.name/]</a>
+				[/let]
+			[/let]
+		[/for]
+[/file]
+[/template]

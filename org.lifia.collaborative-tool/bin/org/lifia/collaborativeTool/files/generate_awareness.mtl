@@ -1,0 +1,31 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_awareness.
+ */]
+[module generate_awareness('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_awareness_view/]
+[import org::lifia::collaborativeTool::files::generate_awareness_style/]
+
+[template public generateAwareness(anAwareness : Awareness)]
+
+[file ('src/app/components/awareness/' + replaceSpaceByDash(anAwareness.name.toLower()) + 'awareness' + '/' + replaceSpaceByDash(anAwareness.name.toLower()) + 'awareness' + '.component.ts', false, 'UTF-8')]
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-[replaceSpaceByDash(anAwareness.name.toLower())/]-awareness',
+  templateUrl: './[replaceSpaceByDash(anAwareness.name.toLower())/]awareness.component.html',
+  styleUrls: [ '[' /]'./[replaceSpaceByDash(anAwareness.name.toLower())/]awareness.component.css'[ ']' /]
+})
+export class [anAwareness.name.replaceAll(' ', '')/]AwarenessComponent {
+
+	constructor() {}
+
+}
+[/file]
+
+[generateAwarenessStyle(anAwareness)/]
+[generateAwarenessView(anAwareness)/]
+
+
+[/template]

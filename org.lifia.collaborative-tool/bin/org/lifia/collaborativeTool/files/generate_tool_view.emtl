@@ -1,0 +1,1310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_tool_view" nsURI="org::lifia::collaborativeTool::files::generate_tool_view" startHeaderPosition="93" endHeaderPosition="246">
+    <documentation xsi:type="mtl:ModuleDocumentation">
+      <body startPosition="32" endPosition="90" value="&#xD;&#xA;The documentation of the module generate_tool_view.&#xD;&#xA;&#xD;&#xA;"/>
+    </documentation>
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    </input>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0"/>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_operation_button.emtl#/0"/>
+    <imports href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_awareness.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateToolView" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;div class=&quot;rectangle&quot;>&#xA;&#x9;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateToolView/aTool">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&lt;div class=&quot;row&quot;>&#xA;&#x9;&lt;div class=&quot;col-md-12&quot;>&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:LetBlock">
+              <body xsi:type="mtl:IfBlock">
+                <body xsi:type="mtl:LetBlock">
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+                  <body xsi:type="mtl:TemplateInvocation">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_operation_button.emtl#/0/generateOperationButton"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateToolView/aCollaborativeModel">
+                      <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateToolView/%.1/%.3/operationTool">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcessEdge" referredVariable="/0/generateToolView/%.1/%.3/%/aCollaborativeProcessEdge">
+                          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge/source"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivityNode" referredVariable="/0/generateToolView/%.1/%.3/%/%/%/%/aCollaborativeActivityNode">
+                        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeActivityNode/collaborativeActivity"/>
+                    </argument>
+                  </body>
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+                  <letVariable name="aCollaborativeActivityNode">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+                    <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcessEdge" referredVariable="/0/generateToolView/%.1/%.3/%/aCollaborativeProcessEdge">
+                          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge/target"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:TypeExp" eType="/12/CollaborativeActivityNode">
+                        <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+                      </argument>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                    </initExpression>
+                  </letVariable>
+                </body>
+                <ifExpr xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/equalsIgnoreCase">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="aOperationInEdge" referredVariable="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateToolView/%.1/%.3/operationTool">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                  </argument>
+                </ifExpr>
+              </body>
+              <body xsi:type="mtl:IfBlock">
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+                <body xsi:type="mtl:TemplateInvocation">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_operation_button.emtl#/0/generateOperationButton"/>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateToolView/aCollaborativeModel">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateToolView/%.1/%.3/operationTool">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcessEdge" referredVariable="/0/generateToolView/%.1/%.3/%/aCollaborativeProcessEdge">
+                        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge/source"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:NullLiteralExp">
+                    <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+                  </argument>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+                <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/equalsIgnoreCase">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="aOperationInEdge" referredVariable="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateToolView/%.1/%.3/operationTool">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                      </source>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                    </argument>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+                </ifExpr>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&lt;app-"/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateToolView/%.1/%.3/operationTool">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=">&lt;/app-"/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="operationTool" referredVariable="/0/generateToolView/%.1/%.3/operationTool">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=">&#xA;"/>
+              <letVariable name="aOperationInEdge">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp" eType="/3/Sequence(String)" referredOperation="/1/oclstdlib_String_Class/tokenize">
+                      <source xsi:type="ocl.ecore:OperationCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:PropertyCallExp">
+                          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//RoleElementOperation"/>
+                          <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcessEdge" referredVariable="/0/generateToolView/%.1/%.3/%/aCollaborativeProcessEdge">
+                            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+                          </source>
+                          <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeProcessEdge/roleElementOperation"/>
+                        </source>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://cm/1.0#//RoleElementOperation/getName"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="->">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </argument>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/last"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+                </initExpression>
+              </letVariable>
+            </body>
+            <loopVariable name="aCollaborativeProcessEdge">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/3/Bag(CollaborativeProcessEdge)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aOutgoings" eType="/3/Set(ActivityEdge)" referredVariable="/0/generateToolView/aOutgoings"/>
+              <body xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateToolView/%.1/%.3/%/collect/temp1">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/12/CollaborativeProcessEdge">
+                  <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+              </body>
+              <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+              </iterator>
+            </iterSet>
+          </body>
+          <loopVariable name="operationTool">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/3/Sequence(Operation)">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(ElementOperation)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateToolView/aTool">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeElement/elementOperation"/>
+            </source>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateToolView/%.1/%.3/collect/temp2">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//ElementOperation/operation"/>
+            </body>
+            <iterator xsi:type="ocl.ecore:Variable" name="temp2">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+            </iterator>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;"/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_awareness.emtl#/0/generateAwareness"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anAwareness" referredVariable="/0/generateToolView/%.1/%.5/anAwareness">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;&#x9;&#x9;&lt;app-"/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="anAwareness" referredVariable="/0/generateToolView/%.1/%.5/anAwareness">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="-awareness>&lt;/app-"/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="anAwareness" referredVariable="/0/generateToolView/%.1/%.5/anAwareness">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="-awareness>&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(CollaborativeElement)">
+                <source xsi:type="ocl.ecore:VariableExp" name="anAwareness" referredVariable="/0/generateToolView/%.1/%.5/anAwareness">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//Awareness/shownIn"/>
+              </source>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateToolView/aTool">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/includes"/>
+            </ifExpr>
+          </body>
+          <loopVariable name="anAwareness">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/3/Set(Awareness)">
+            <source xsi:type="ocl.ecore:TypeExp" eType="/12/Awareness">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType_Class/allInstances"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&lt;/div>&#xA;&lt;/div>&#xA;&lt;/div>&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/app/components/tool/">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </source>
+                <argument xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+                  <argument xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateToolView/aTool">
+                        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                  </argument>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </source>
+            <argument xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="aTool" referredVariable="/0/generateToolView/aTool">
+                    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement/name"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </argument>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".component.html">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+      <parameter name="aTool">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+      </parameter>
+      <parameter name="aSourceCollaborativeActivity">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+      </parameter>
+      <parameter name="aOutgoings" eType="/3/Set(ActivityEdge)"/>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="tokenize">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/acceleo/mtl/3.0/mtlnonstdlib.ecore#//Sequence(String)"/>
+        <eParameters name="delimiters">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="equalsIgnoreCase">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateToolView">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateToolView"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aTool">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Tool"/>
+        </eParameters>
+        <eParameters name="aSourceCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+        <eParameters name="aOutgoings" eType="/3/Set(ActivityEdge)"/>
+      </eOperations>
+      <eOperations name="replaceSpaceByDash">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/utils/replace_space_by_dash.emtl#/0/replaceSpaceByDash"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateOperationButton">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_operation_button.emtl#/0/generateOperationButton"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aOperationName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="aSourceCollaborativeActivityName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateAwareness">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="platform:/resource/org.lifia.collaborative-tool/bin/org/lifia/collaborativeTool/files/generate_awareness.emtl#/0/generateAwareness"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anAwareness">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_Awareness_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//Awareness"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ActivityEdge)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(ElementOperation)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//ElementOperation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Operation)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(CollaborativeProcessEdge)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Awareness)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(CollaborativeElement)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeProcessEdge">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeActivityNode">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Awareness">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//Awareness"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/%">
+      <details key="start" value="29"/>
+      <details key="end" value="92"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateToolView">
+      <details key="start" value="392"/>
+      <details key="end" value="2237"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateToolView/%">
+      <details key="start" value="567"/>
+      <details key="end" value="568"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateToolView/%.1">
+      <details key="start" value="568"/>
+      <details key="end" value="2225"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateToolView/%.1/%">
+      <details key="start" value="732"/>
+      <details key="end" value="757"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateToolView/%.1/%.1">
+      <details key="start" value="758"/>
+      <details key="end" value="768"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateToolView/%.1/%.1/aTool">
+      <details key="start" value="758"/>
+      <details key="end" value="763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateToolView/%.1/%.2">
+      <details key="start" value="770"/>
+      <details key="end" value="815"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateToolView/%.1/%.3">
+      <details key="start" value="817"/>
+      <details key="end" value="1894"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateToolView/%.1/%.3/%">
+      <details key="start" value="889"/>
+      <details key="end" value="1885"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateToolView/%.1/%.3/%/%">
+      <details key="start" value="1003"/>
+      <details key="end" value="1875"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateToolView/%.1/%.3/%/%/%">
+      <details key="start" value="1136"/>
+      <details key="end" value="1533"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateToolView/%.1/%.3/%/%/%/%">
+      <details key="start" value="1213"/>
+      <details key="end" value="1522"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateToolView/%.1/%.3/%/%/%/%/%">
+      <details key="start" value="1346"/>
+      <details key="end" value="1353"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1">
+      <details key="start" value="1354"/>
+      <details key="end" value="1507"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/aCollaborativeModel">
+      <details key="start" value="1378"/>
+      <details key="end" value="1397"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/%">
+      <details key="start" value="1399"/>
+      <details key="end" value="1417"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/%/operationTool">
+      <details key="start" value="1399"/>
+      <details key="end" value="1412"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/%.1">
+      <details key="start" value="1419"/>
+      <details key="end" value="1456"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/%.1/%">
+      <details key="start" value="1419"/>
+      <details key="end" value="1451"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/%.1/%/aCollaborativeProcessEdge">
+      <details key="start" value="1419"/>
+      <details key="end" value="1444"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/%.2">
+      <details key="start" value="1458"/>
+      <details key="end" value="1506"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.1/%.2/aCollaborativeActivityNode">
+      <details key="start" value="1458"/>
+      <details key="end" value="1484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateToolView/%.1/%.3/%/%/%/%/%.2">
+      <details key="start" value="1509"/>
+      <details key="end" value="1510"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateToolView/%.1/%.3/%/%/%/%/aCollaborativeActivityNode">
+      <details key="start" value="1218"/>
+      <details key="end" value="1344"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateToolView/%.1/%.3/%/%/%/%/aCollaborativeActivityNode/%">
+      <details key="start" value="1276"/>
+      <details key="end" value="1345"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateToolView/%.1/%.3/%/%/%/%/aCollaborativeActivityNode/%/%">
+      <details key="start" value="1276"/>
+      <details key="end" value="1308"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateToolView/%.1/%.3/%/%/%/%/aCollaborativeActivityNode/%/%/aCollaborativeProcessEdge">
+      <details key="start" value="1276"/>
+      <details key="end" value="1301"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateToolView/%.1/%.3/%/%/%/%/aCollaborativeActivityNode/%/%.1">
+      <details key="start" value="1319"/>
+      <details key="end" value="1344"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateToolView/%.1/%.3/%/%/%/%.1">
+      <details key="start" value="1140"/>
+      <details key="end" value="1205"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateToolView/%.1/%.3/%/%/%/%.1/aOperationInEdge">
+      <details key="start" value="1141"/>
+      <details key="end" value="1157"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateToolView/%.1/%.3/%/%/%/%.1/%">
+      <details key="start" value="1175"/>
+      <details key="end" value="1203"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateToolView/%.1/%.3/%/%/%/%.1/%/%">
+      <details key="start" value="1175"/>
+      <details key="end" value="1193"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateToolView/%.1/%.3/%/%/%/%.1/%/%/operationTool">
+      <details key="start" value="1175"/>
+      <details key="end" value="1188"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateToolView/%.1/%.3/%/%/%.1">
+      <details key="start" value="1539"/>
+      <details key="end" value="1743"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateToolView/%.1/%.3/%/%/%.1/%">
+      <details key="start" value="1614"/>
+      <details key="end" value="1620"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1">
+      <details key="start" value="1621"/>
+      <details key="end" value="1730"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1/aCollaborativeModel">
+      <details key="start" value="1645"/>
+      <details key="end" value="1664"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1/%">
+      <details key="start" value="1666"/>
+      <details key="end" value="1684"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1/%/operationTool">
+      <details key="start" value="1666"/>
+      <details key="end" value="1679"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1/%.1">
+      <details key="start" value="1686"/>
+      <details key="end" value="1723"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1/%.1/%">
+      <details key="start" value="1686"/>
+      <details key="end" value="1718"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1/%.1/%/aCollaborativeProcessEdge">
+      <details key="start" value="1686"/>
+      <details key="end" value="1711"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.1/%.2">
+      <details key="start" value="1725"/>
+      <details key="end" value="1729"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.2">
+      <details key="start" value="1732"/>
+      <details key="end" value="1733"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.3">
+      <details key="start" value="1543"/>
+      <details key="end" value="1612"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.3/%">
+      <details key="start" value="1548"/>
+      <details key="end" value="1611"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.3/%/aOperationInEdge">
+      <details key="start" value="1548"/>
+      <details key="end" value="1564"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.3/%/%">
+      <details key="start" value="1582"/>
+      <details key="end" value="1610"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.3/%/%/%">
+      <details key="start" value="1582"/>
+      <details key="end" value="1600"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateToolView/%.1/%.3/%/%/%.1/%.3/%/%/%/operationTool">
+      <details key="start" value="1582"/>
+      <details key="end" value="1595"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateToolView/%.1/%.3/%/%/%.2">
+      <details key="start" value="1744"/>
+      <details key="end" value="1754"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateToolView/%.1/%.3/%/%/%.3">
+      <details key="start" value="1755"/>
+      <details key="end" value="1803"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateToolView/%.1/%.3/%/%/%.3/%">
+      <details key="start" value="1774"/>
+      <details key="end" value="1802"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateToolView/%.1/%.3/%/%/%.3/%/%">
+      <details key="start" value="1774"/>
+      <details key="end" value="1792"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateToolView/%.1/%.3/%/%/%.3/%/%/operationTool">
+      <details key="start" value="1774"/>
+      <details key="end" value="1787"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateToolView/%.1/%.3/%/%/%.4">
+      <details key="start" value="1805"/>
+      <details key="end" value="1812"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateToolView/%.1/%.3/%/%/%.5">
+      <details key="start" value="1813"/>
+      <details key="end" value="1861"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateToolView/%.1/%.3/%/%/%.5/%">
+      <details key="start" value="1832"/>
+      <details key="end" value="1860"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateToolView/%.1/%.3/%/%/%.5/%/%">
+      <details key="start" value="1832"/>
+      <details key="end" value="1850"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateToolView/%.1/%.3/%/%/%.5/%/%/operationTool">
+      <details key="start" value="1832"/>
+      <details key="end" value="1845"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateToolView/%.1/%.3/%/%/%.6">
+      <details key="start" value="1863"/>
+      <details key="end" value="1865"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge">
+      <details key="start" value="1008"/>
+      <details key="end" value="1129"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge/%">
+      <details key="start" value="1037"/>
+      <details key="end" value="1130"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge/%/%">
+      <details key="start" value="1037"/>
+      <details key="end" value="1116"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge/%/%/%">
+      <details key="start" value="1037"/>
+      <details key="end" value="1108"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge/%/%/%/%">
+      <details key="start" value="1037"/>
+      <details key="end" value="1093"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge/%/%/%/%/%">
+      <details key="start" value="1037"/>
+      <details key="end" value="1083"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge/%/%/%/%/%/aCollaborativeProcessEdge">
+      <details key="start" value="1037"/>
+      <details key="end" value="1062"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateToolView/%.1/%.3/%/%/aOperationInEdge/%/%/%/%.1">
+      <details key="start" value="1103"/>
+      <details key="end" value="1107"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateToolView/%.1/%.3/%/aCollaborativeProcessEdge">
+      <details key="start" value="895"/>
+      <details key="end" value="947"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateToolView/%.1/%.3/%/collect">
+      <details key="start" value="950"/>
+      <details key="end" value="996"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateToolView/%.1/%.3/%/collect/aOutgoings">
+      <details key="start" value="950"/>
+      <details key="end" value="960"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateToolView/%.1/%.3/%/collect/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateToolView/%.1/%.3/%/collect/%/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateToolView/%.1/%.3/%/collect/%/%">
+      <details key="start" value="971"/>
+      <details key="end" value="995"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateToolView/%.1/%.3/%/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateToolView/%.1/%.3/operationTool">
+      <details key="start" value="823"/>
+      <details key="end" value="848"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateToolView/%.1/%.3/collect">
+      <details key="start" value="851"/>
+      <details key="end" value="883"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateToolView/%.1/%.3/collect/%">
+      <details key="start" value="851"/>
+      <details key="end" value="873"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateToolView/%.1/%.3/collect/%/aTool">
+      <details key="start" value="851"/>
+      <details key="end" value="856"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateToolView/%.1/%.3/collect/%.1">
+      <details key="start" value="874"/>
+      <details key="end" value="883"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateToolView/%.1/%.3/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateToolView/%.1/%.3/collect/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateToolView/%.1/%.4">
+      <details key="start" value="1895"/>
+      <details key="end" value="1896"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateToolView/%.1/%.5">
+      <details key="start" value="1898"/>
+      <details key="end" value="2195"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateToolView/%.1/%.5/%">
+      <details key="start" value="1960"/>
+      <details key="end" value="2186"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateToolView/%.1/%.5/%/%">
+      <details key="start" value="2004"/>
+      <details key="end" value="2008"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateToolView/%.1/%.5/%/%.1">
+      <details key="start" value="2009"/>
+      <details key="end" value="2039"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateToolView/%.1/%.5/%/%.1/anAwareness">
+      <details key="start" value="2027"/>
+      <details key="end" value="2038"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateToolView/%.1/%.5/%/%.2">
+      <details key="start" value="2041"/>
+      <details key="end" value="2051"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateToolView/%.1/%.5/%/%.3">
+      <details key="start" value="2052"/>
+      <details key="end" value="2098"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateToolView/%.1/%.5/%/%.3/%">
+      <details key="start" value="2071"/>
+      <details key="end" value="2097"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateToolView/%.1/%.5/%/%.3/%/%">
+      <details key="start" value="2071"/>
+      <details key="end" value="2087"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateToolView/%.1/%.5/%/%.3/%/%/anAwareness">
+      <details key="start" value="2071"/>
+      <details key="end" value="2082"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateToolView/%.1/%.5/%/%.4">
+      <details key="start" value="2100"/>
+      <details key="end" value="2117"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateToolView/%.1/%.5/%/%.5">
+      <details key="start" value="2118"/>
+      <details key="end" value="2164"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateToolView/%.1/%.5/%/%.5/%">
+      <details key="start" value="2137"/>
+      <details key="end" value="2163"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateToolView/%.1/%.5/%/%.5/%/%">
+      <details key="start" value="2137"/>
+      <details key="end" value="2153"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateToolView/%.1/%.5/%/%.5/%/%/anAwareness">
+      <details key="start" value="2137"/>
+      <details key="end" value="2148"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateToolView/%.1/%.5/%/%.6">
+      <details key="start" value="2166"/>
+      <details key="end" value="2178"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateToolView/%.1/%.5/%/%.7">
+      <details key="start" value="1964"/>
+      <details key="end" value="2002"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateToolView/%.1/%.5/%/%.7/%">
+      <details key="start" value="1965"/>
+      <details key="end" value="1984"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateToolView/%.1/%.5/%/%.7/%/anAwareness">
+      <details key="start" value="1965"/>
+      <details key="end" value="1976"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateToolView/%.1/%.5/%/%.7/aTool">
+      <details key="start" value="1995"/>
+      <details key="end" value="2000"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateToolView/%.1/%.5/anAwareness">
+      <details key="start" value="1904"/>
+      <details key="end" value="1927"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateToolView/%.1/%.5/%.1">
+      <details key="start" value="1930"/>
+      <details key="end" value="1954"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateToolView/%.1/%.5/%.1/%">
+      <details key="start" value="1930"/>
+      <details key="end" value="1939"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateToolView/%.1/%.6">
+      <details key="start" value="2196"/>
+      <details key="end" value="2218"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateToolView/%.1/%.7">
+      <details key="start" value="575"/>
+      <details key="end" value="713"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateToolView/%.1/%.7/%">
+      <details key="start" value="575"/>
+      <details key="end" value="693"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateToolView/%.1/%.7/%/%">
+      <details key="start" value="575"/>
+      <details key="end" value="650"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateToolView/%.1/%.7/%/%/%">
+      <details key="start" value="575"/>
+      <details key="end" value="644"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateToolView/%.1/%.7/%/%/%/%">
+      <details key="start" value="575"/>
+      <details key="end" value="601"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateToolView/%.1/%.7/%/%/%/%.1">
+      <details key="start" value="604"/>
+      <details key="end" value="644"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateToolView/%.1/%.7/%/%/%/%.1/%">
+      <details key="start" value="623"/>
+      <details key="end" value="643"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateToolView/%.1/%.7/%/%/%/%.1/%/%">
+      <details key="start" value="623"/>
+      <details key="end" value="633"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateToolView/%.1/%.7/%/%/%/%.1/%/%/aTool">
+      <details key="start" value="623"/>
+      <details key="end" value="628"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateToolView/%.1/%.7/%/%/%.1">
+      <details key="start" value="647"/>
+      <details key="end" value="650"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateToolView/%.1/%.7/%/%.1">
+      <details key="start" value="653"/>
+      <details key="end" value="693"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateToolView/%.1/%.7/%/%.1/%">
+      <details key="start" value="672"/>
+      <details key="end" value="692"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generateToolView/%.1/%.7/%/%.1/%/%">
+      <details key="start" value="672"/>
+      <details key="end" value="682"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generateToolView/%.1/%.7/%/%.1/%/%/aTool">
+      <details key="start" value="672"/>
+      <details key="end" value="677"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generateToolView/%.1/%.7/%.1">
+      <details key="start" value="696"/>
+      <details key="end" value="713"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generateToolView/%.1/%.8">
+      <details key="start" value="722"/>
+      <details key="end" value="729"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/generateToolView/aCollaborativeModel">
+      <details key="start" value="426"/>
+      <details key="end" value="466"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/generateToolView/aTool">
+      <details key="start" value="468"/>
+      <details key="end" value="479"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/generateToolView/aSourceCollaborativeActivity">
+      <details key="start" value="481"/>
+      <details key="end" value="532"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/generateToolView/aOutgoings">
+      <details key="start" value="534"/>
+      <details key="end" value="564"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

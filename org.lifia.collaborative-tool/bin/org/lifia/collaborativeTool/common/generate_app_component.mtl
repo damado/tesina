@@ -1,0 +1,21 @@
+[comment encoding = UTF-8 /]
+[module generate_app_component('http://cm/1.0')]
+
+
+[template public generateAppComponent(aCollaborativeModel : CollaborativeModel)]
+
+[file ('src/app/app.component.ts', false, 'UTF-8')]
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: [ '[' /]'./app.component.css'[ ']' /]
+})
+export class AppComponent {
+  title = '[aCollaborativeModel.name/]';
+}
+
+[/file]
+
+[/template]

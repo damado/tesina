@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_collaborative_activity_role_list.
+ */]
+[module generate_collaborative_activity_role_list('http://cm/1.0')]
+
+[template public generateCollaborativeActivityRoleList(aCollaborativeActivity : CollaborativeActivity)]
+[ '[' /]
+	[for (aCollaborationRole : CollaborationRole | aCollaborativeActivity.myRoles) separator(',')]
+		'[aCollaborationRole.name/]',
+	[/for]
+[ ']' /]
+[/template]

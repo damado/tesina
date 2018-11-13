@@ -1,0 +1,55 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_menu_collaborative_activity.
+ */]
+[module generate_menu_collaborative_activity('http://cm/1.0')]
+[import org::lifia::collaborativeTool::files::generate_menu_collaborative_activity_view /]
+[import org::lifia::collaborativeTool::files::generate_menu_collaborative_activity_style /]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::utils::generate_collaborative_activity_role_list /]
+
+[template public generateMenuCollaborativeActivity(aCollaborativeModel : CollaborativeModel, aCollaborativeActivity : CollaborativeActivity, aWorkspaceName : String)]
+
+[file ('src/app/components/menucollaborativeactivity/menu'+ replaceSpaceByDash(aWorkspaceName.toLower()) + replaceSpaceByDash(aCollaborativeActivity.name.toLower()) + '/menu' + replaceSpaceByDash(aWorkspaceName.toLower()) + replaceSpaceByDash(aCollaborativeActivity.name.toLower()) + '.component.ts', false, 'UTF-8')]
+import { Component } from '@angular/core';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { ProcessContextService } from '../../../services/process-context.service';
+import { SharedComponent } from '../../shared/shared.component';
+
+@Component({
+  selector: 'app-menu-[replaceSpaceByDash(aWorkspaceName.toLower())/]-[replaceSpaceByDash(aCollaborativeActivity.name.toLower())/]',
+  templateUrl: './menu[replaceSpaceByDash(aWorkspaceName.toLower())/][replaceSpaceByDash(aCollaborativeActivity.name.toLower())/].component.html',
+  styleUrls: [ '[' /]'./menu[replaceSpaceByDash(aWorkspaceName.toLower())/][replaceSpaceByDash(aCollaborativeActivity.name.toLower())/].component.css'[ ']' /]
+})
+export class Menu[aWorkspaceName.replaceAll(' ', '')/][aCollaborativeActivity.name.replaceAll(' ', '')/]Component extends SharedComponent {
+
+	constructor(protected autenticationService: AuthenticationService, protected processContextService: ProcessContextService) {
+		super(autenticationService);
+		this.setRoles([generateCollaborativeActivityRoleList(aCollaborativeActivity)/]);
+	}
+
+	ngOnInit() {
+		this.checkRolesComponent();
+		if (!this.desactive) {
+			this.setProcesscontext();
+		}
+	}
+
+	public setProcesscontext(): void {
+		this.processContextService.create('[aCollaborativeActivity.name.toLower()/]', this.autenticationService.getUserLogged().getRole().toLowerCase(), this.autenticationService.getUserLogged().getUsername()).subscribe(
+				response => {
+						console.log("response", response);
+				},
+				error => {
+						console.log("Error en generar proceso", error);
+			}
+		);
+	}
+
+}
+[/file]
+
+[generateMenuCollaborativeActivityStyle(aCollaborativeModel, aCollaborativeActivity.name, aWorkspaceName)/]
+[generateMenuCollaborativeActivityView(aCollaborativeModel, aCollaborativeActivity.name, aWorkspaceName)/]
+
+[/template]

@@ -1,0 +1,8 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module get_import_by_string.
+ */]
+[module get_import_by_string('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[query public getImportByString (aName : String, aDirectoryName : String) : String = 'import { ' + aName.replaceAll(' ', '') + 'Component' + ' } from ' + '\'./components/' + aDirectoryName.toLowerCase() + '/' + replaceSpaceByDash(aName.toLower()) + '/' + replaceSpaceByDash(aName.toLower()) + '.component\';' /]

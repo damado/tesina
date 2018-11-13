@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_collaborative_activity" nsURI="org::lifia::collaborativeTool::common::generate_collaborative_activity" startHeaderPosition="106" endHeaderPosition="292">
+    <documentation xsi:type="mtl:ModuleDocumentation">
+      <body startPosition="32" endPosition="103" value="&#xD;&#xA;The documentation of the module generate_collaborative_activity.&#xD;&#xA;&#xD;&#xA;"/>
+    </documentation>
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    </input>
+    <imports href="../utils/get_workspace_in_collaborative_activity.emtl#/0"/>
+    <imports href="generate_component.emtl#/0"/>
+    <imports href="../files/generate_workspace_view.emtl#/0"/>
+    <imports href="../files/generate_workspace_style.emtl#/0"/>
+    <imports href="../files/generate_collaborative_activity_style.emtl#/0"/>
+    <imports href="../files/generate_collaborative_activity_view.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateCollaborativeActivity" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="../files/generate_collaborative_activity_style.emtl#/0/generateCollaborativeActivityStyle"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateCollaborativeActivity/aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="generate_component.emtl#/0/generateComponent"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateCollaborativeActivity/aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateCollaborativeActivity/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="../files/generate_collaborative_activity_view.emtl#/0/generateCollaborativeActivityView"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateCollaborativeActivity/aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateCollaborativeActivity/aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </argument>
+        <argument xsi:type="ocl.ecore:VariableExp" name="aOutgoings" eType="/3/Set(ActivityEdge)" referredVariable="/0/generateCollaborativeActivity/aOutgoings"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;"/>
+        <loopVariable name="aCollaborativeProcessEdge">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/3/Bag(CollaborativeProcessEdge)">
+          <source xsi:type="ocl.ecore:VariableExp" name="aOutgoings" eType="/3/Set(ActivityEdge)" referredVariable="/0/generateCollaborativeActivity/aOutgoings"/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateCollaborativeActivity/%.7/collect/temp1">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/10/CollaborativeProcessEdge">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+          </iterator>
+        </iterSet>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+      <parameter name="aCollaborativeActivity">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+      </parameter>
+      <parameter name="aOutgoings" eType="/3/Set(ActivityEdge)"/>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateCollaborativeActivity">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateCollaborativeActivity"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+        <eParameters name="aOutgoings" eType="/3/Set(ActivityEdge)"/>
+      </eOperations>
+      <eOperations name="generateComponent">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_component.emtl#/0/generateComponent"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeElement">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeElement"/>
+        </eParameters>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateCollaborativeActivityStyle">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../files/generate_collaborative_activity_style.emtl#/0/generateCollaborativeActivityStyle"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateCollaborativeActivityView">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../files/generate_collaborative_activity_view.emtl#/0/generateCollaborativeActivityView"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+        <eParameters name="aOutgoings">
+          <eType xsi:type="ocl.ecore:SetType" href="../files/generate_collaborative_activity_view.emtl#/3/Set(ActivityEdge)"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeActivity_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeActivity"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeElement"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_Workspace_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//Workspace"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ActivityEdge)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(CollaborativeProcessEdge)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeProcessEdge">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcessEdge"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/%">
+      <details key="start" value="29"/>
+      <details key="end" value="105"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateCollaborativeActivity">
+      <details key="start" value="683"/>
+      <details key="end" value="1207"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateCollaborativeActivity/%">
+      <details key="start" value="852"/>
+      <details key="end" value="853"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateCollaborativeActivity/%.1">
+      <details key="start" value="854"/>
+      <details key="end" value="912"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateCollaborativeActivity/%.1/aCollaborativeActivity">
+      <details key="start" value="889"/>
+      <details key="end" value="911"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateCollaborativeActivity/%.2">
+      <details key="start" value="914"/>
+      <details key="end" value="915"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateCollaborativeActivity/%.3">
+      <details key="start" value="916"/>
+      <details key="end" value="978"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateCollaborativeActivity/%.3/aCollaborativeActivity">
+      <details key="start" value="934"/>
+      <details key="end" value="956"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateCollaborativeActivity/%.3/aCollaborativeModel">
+      <details key="start" value="958"/>
+      <details key="end" value="977"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateCollaborativeActivity/%.4">
+      <details key="start" value="980"/>
+      <details key="end" value="981"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateCollaborativeActivity/%.5">
+      <details key="start" value="982"/>
+      <details key="end" value="1072"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateCollaborativeActivity/%.5/aCollaborativeModel">
+      <details key="start" value="1016"/>
+      <details key="end" value="1035"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateCollaborativeActivity/%.5/aCollaborativeActivity">
+      <details key="start" value="1037"/>
+      <details key="end" value="1059"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateCollaborativeActivity/%.5/aOutgoings">
+      <details key="start" value="1061"/>
+      <details key="end" value="1071"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateCollaborativeActivity/%.6">
+      <details key="start" value="1074"/>
+      <details key="end" value="1076"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateCollaborativeActivity/%.7">
+      <details key="start" value="1076"/>
+      <details key="end" value="1194"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateCollaborativeActivity/%.7/%">
+      <details key="start" value="1186"/>
+      <details key="end" value="1188"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateCollaborativeActivity/%.7/aCollaborativeProcessEdge">
+      <details key="start" value="1082"/>
+      <details key="end" value="1134"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateCollaborativeActivity/%.7/collect">
+      <details key="start" value="1137"/>
+      <details key="end" value="1183"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateCollaborativeActivity/%.7/collect/aOutgoings">
+      <details key="start" value="1137"/>
+      <details key="end" value="1147"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateCollaborativeActivity/%.7/collect/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateCollaborativeActivity/%.7/collect/%/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateCollaborativeActivity/%.7/collect/%/%">
+      <details key="start" value="1158"/>
+      <details key="end" value="1182"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateCollaborativeActivity/%.7/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateCollaborativeActivity/%.8">
+      <details key="start" value="1195"/>
+      <details key="end" value="1196"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateCollaborativeActivity/aCollaborativeModel">
+      <details key="start" value="730"/>
+      <details key="end" value="769"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateCollaborativeActivity/aCollaborativeActivity">
+      <details key="start" value="771"/>
+      <details key="end" value="817"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateCollaborativeActivity/aOutgoings">
+      <details key="start" value="819"/>
+      <details key="end" value="849"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

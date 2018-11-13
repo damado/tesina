@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_operation_button_view.
+ */]
+[module generate_operation_button_view('http://cm/1.0')]
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+
+[template public generateOperationButtonView(aCollaborativeModel : CollaborativeModel, aOperationName: String)]
+
+[file ('src/app/components/operations/' + replaceSpaceByDash(aOperationName.toLower()) + '/' + replaceSpaceByDash(aOperationName.toLower()) + '.component.html', false, 'UTF-8')]
+<button (click)="redirect()">[aOperationName/]</button>
+[/file]
+[/template]

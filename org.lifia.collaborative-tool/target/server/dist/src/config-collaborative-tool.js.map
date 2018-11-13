@@ -1,0 +1,1 @@
+{"version":3,"file":"config-collaborative-tool.js","sourceRoot":"","sources":["../../src/config-collaborative-tool.ts"],"names":[],"mappings":";AAAA;;;;GAIG;;AAEQ,QAAA,oBAAoB,GAC/B;IACC,YAAY,EACX;QACC;YACC,MAAM,EAAE,eAAe;YACvB,OAAO,EAAE;gBACR;oBACC,MAAM,EAAE,SAAS;oBACjB,0BAA0B,EAAE,CAAC;iBAC7B;gBACD;oBACC,MAAM,EAAE,QAAQ;oBAChB,0BAA0B,EAAE,CAAC;iBAC7B;aACD;SACD;KACD;CACF,CAAA"}

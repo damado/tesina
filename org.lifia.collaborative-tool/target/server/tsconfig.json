@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "./dist",
+        // "strict": true,
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "declaration": true,
+        "resolveJsonModule": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "watch": true
+    },
+  "include": [
+    "index.ts",
+    "server.ts",
+    "src/**/*.ts"
+    ],
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+}

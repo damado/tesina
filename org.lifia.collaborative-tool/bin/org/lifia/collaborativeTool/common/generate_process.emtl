@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate_process" nsURI="org::lifia::collaborativeTool::common::generate_process" startHeaderPosition="91" endHeaderPosition="255">
+    <documentation xsi:type="mtl:ModuleDocumentation">
+      <body startPosition="32" endPosition="88" value="&#xD;&#xA;The documentation of the module generate_process.&#xD;&#xA;&#xD;&#xA;"/>
+    </documentation>
+    <input>
+      <takesTypesFrom href="http://cm/1.0#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    </input>
+    <imports href="generate_collaborative_activity.emtl#/0"/>
+    <imports href="generate_component.emtl#/0"/>
+    <imports href="../files/generate_workspace_view.emtl#/0"/>
+    <imports href="../files/generate_workspace_style.emtl#/0"/>
+    <imports href="../utils/get_workspace_in_collaborative_activity.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateProcess" visibility="Public">
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="generate_collaborative_activity.emtl#/0/generateCollaborativeActivity"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeModel" referredVariable="/0/generateProcess/aCollaborativeModel">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivity" referredVariable="/0/generateProcess/%/%.1/%/aCollaborativeActivity">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:PropertyCallExp" eType="/6/Set(ActivityEdge)">
+                <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivityNode" referredVariable="/0/generateProcess/%/%.1/aCollaborativeActivityNode">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode/outgoing"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <letVariable name="aCollaborativeActivity">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+              <initExpression xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeActivityNode" referredVariable="/0/generateProcess/%/%.1/aCollaborativeActivityNode">
+                  <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://cm/1.0#//CollaborativeActivityNode/collaborativeActivity"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <loopVariable name="aCollaborativeActivityNode">
+            <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/6/Set(CollaborativeActivityNode)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/Set(ActivityNode)">
+              <source xsi:type="ocl.ecore:VariableExp" name="activity" referredVariable="/0/generateProcess/%/activity">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity/ownedNode"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/7/CollaborativeActivityNode">
+              <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;&#xA;"/>
+        <loopVariable name="activity">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/6/Set(Activity)" referredOperation="/1/oclstdlib_Collection(T)_Class/filter">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/Set(NamedElement)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aCollaborativeProcess" referredVariable="/0/generateProcess/aCollaborativeProcess">
+              <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Namespace/ownedMember"/>
+          </source>
+          <argument xsi:type="ocl.ecore:TypeExp" eType="/7/Activity">
+            <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+          </argument>
+        </iterSet>
+      </body>
+      <parameter name="aCollaborativeModel">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+      </parameter>
+      <parameter name="aCollaborativeProcess">
+        <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateProcess">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateProcess"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeProcess">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeProcess"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateCollaborativeActivity">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="generate_collaborative_activity.emtl#/0/generateCollaborativeActivity"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aCollaborativeModel">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+        </eParameters>
+        <eParameters name="aCollaborativeActivity">
+          <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivity"/>
+        </eParameters>
+        <eParameters name="aOutgoings">
+          <eType xsi:type="ocl.ecore:SetType" href="generate_collaborative_activity.emtl#/3/Set(ActivityEdge)"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+      <eOperations name="filter">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:CollectionType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+        <eParameters name="filter">
+          <eType xsi:type="ocl.ecore:TypeType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeModel"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeElement"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_Workspace_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//Workspace"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="cm_CollaborativeActivity_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://cm/1.0#//CollaborativeActivity"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(NamedElement)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Activity)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ActivityNode)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(CollaborativeActivityNode)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ActivityEdge)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Activity">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="CollaborativeActivityNode">
+      <referredType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeActivityNode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Activity"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://cm/1.0#//CollaborativeModel"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/%">
+      <details key="start" value="29"/>
+      <details key="end" value="90"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateProcess">
+      <details key="start" value="562"/>
+      <details key="end" value="3392"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateProcess/%">
+      <details key="start" value="684"/>
+      <details key="end" value="3380"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateProcess/%/%">
+      <details key="start" value="2528"/>
+      <details key="end" value="2529"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateProcess/%/%.1">
+      <details key="start" value="2970"/>
+      <details key="end" value="3340"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateProcess/%/%.1/%">
+      <details key="start" value="3094"/>
+      <details key="end" value="3330"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateProcess/%/%.1/%/%">
+      <details key="start" value="3198"/>
+      <details key="end" value="3204"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateProcess/%/%.1/%/%.1">
+      <details key="start" value="3205"/>
+      <details key="end" value="3316"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateProcess/%/%.1/%/%.1/aCollaborativeModel">
+      <details key="start" value="3235"/>
+      <details key="end" value="3254"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateProcess/%/%.1/%/%.1/aCollaborativeActivity">
+      <details key="start" value="3256"/>
+      <details key="end" value="3278"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateProcess/%/%.1/%/%.1/%">
+      <details key="start" value="3280"/>
+      <details key="end" value="3315"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateProcess/%/%.1/%/%.1/%/aCollaborativeActivityNode">
+      <details key="start" value="3280"/>
+      <details key="end" value="3306"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateProcess/%/%.1/%/%.2">
+      <details key="start" value="3318"/>
+      <details key="end" value="3319"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateProcess/%/%.1/%/aCollaborativeActivity">
+      <details key="start" value="3099"/>
+      <details key="end" value="3196"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateProcess/%/%.1/%/aCollaborativeActivity/%">
+      <details key="start" value="3149"/>
+      <details key="end" value="3197"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateProcess/%/%.1/%/aCollaborativeActivity/%/aCollaborativeActivityNode">
+      <details key="start" value="3149"/>
+      <details key="end" value="3175"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateProcess/%/%.1/aCollaborativeActivityNode">
+      <details key="start" value="2976"/>
+      <details key="end" value="3030"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateProcess/%/%.1/%.1">
+      <details key="start" value="3033"/>
+      <details key="end" value="3086"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateProcess/%/%.1/%.1/%">
+      <details key="start" value="3033"/>
+      <details key="end" value="3051"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateProcess/%/%.1/%.1/%/activity">
+      <details key="start" value="3033"/>
+      <details key="end" value="3041"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateProcess/%/%.1/%.1/%.1">
+      <details key="start" value="3060"/>
+      <details key="end" value="3085"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateProcess/%/%.2">
+      <details key="start" value="3369"/>
+      <details key="end" value="3373"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateProcess/%/activity">
+      <details key="start" value="690"/>
+      <details key="end" value="709"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateProcess/%/%.3">
+      <details key="start" value="712"/>
+      <details key="end" value="763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateProcess/%/%.3/%">
+      <details key="start" value="712"/>
+      <details key="end" value="745"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateProcess/%/%.3/%/aCollaborativeProcess">
+      <details key="start" value="712"/>
+      <details key="end" value="733"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateProcess/%/%.3/%.1">
+      <details key="start" value="754"/>
+      <details key="end" value="762"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateProcess/aCollaborativeModel">
+      <details key="start" value="595"/>
+      <details key="end" value="634"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateProcess/aCollaborativeProcess">
+      <details key="start" value="636"/>
+      <details key="end" value="680"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

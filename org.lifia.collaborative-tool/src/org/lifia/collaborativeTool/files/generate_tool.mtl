@@ -1,0 +1,32 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate_tool.
+ */]
+[module generate_tool('http://cm/1.0', 'http://www.eclipse.org/uml2/3.0.0/UML')]
+
+[import org::lifia::collaborativeTool::utils::replace_space_by_dash/]
+[import org::lifia::collaborativeTool::files::generate_tool_view/]
+[import org::lifia::collaborativeTool::files::generate_tool_style/]
+[import org::lifia::collaborativeTool::common::generate_component/]
+
+[template public generateTool(aCollaborativeModel : CollaborativeModel, aTool: Tool, aSourceCollaborativeActivity: CollaborativeActivity, aOutgoings : Set(ActivityEdge))]
+
+[file ('src/app/components/tool/' + replaceSpaceByDash(aTool.name.toLower()) + '/' + replaceSpaceByDash(aTool.name.toLower()) + '.component.ts', false, 'UTF-8')]
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-[replaceSpaceByDash(aTool.name.toLower())/]',
+  templateUrl: './[replaceSpaceByDash(aTool.name.toLower())/].component.html',
+  styleUrls: [ '[' /]'./[replaceSpaceByDash(aTool.name.toLower())/].component.css'[ ']' /]
+})
+export class [aTool.name.replaceAll(' ', '')/]Component {
+
+	constructor() {}
+
+}
+[/file]
+
+[generateToolView(aCollaborativeModel, aTool, aSourceCollaborativeActivity, aOutgoings)/]
+[generateToolStyle(aCollaborativeModel, aTool)/]
+
+[/template]
